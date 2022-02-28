@@ -21,7 +21,7 @@ Form current;
                 current=this; //Back 
                 
         add(new Label("Welcom to Travel_Me"));
-        setTitle("homme Page ");
+        setTitle("Voyage ");
         setLayout(BoxLayout.y());
         
     Button BUTVoyage = new Button("Voyage");

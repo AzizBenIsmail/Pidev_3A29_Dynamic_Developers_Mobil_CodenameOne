@@ -309,6 +309,7 @@
         <val key="sel#transparency" value="0" />
         <val key="transparency" value="0" />
     </theme>
+    <image name="tra.png"  />
     <image name="travel.png"  />
     <image name="unselected-walkthru.png" type="multi"  />
     <image name="user-picture.jpg"  />
