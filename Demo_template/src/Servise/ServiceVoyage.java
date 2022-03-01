@@ -24,37 +24,33 @@ import java.util.Map;
  * @author ASUS
  */
 public class ServiceVoyage {
+    
+        private static ServiceVoyage instance = null;
     public ConnectionRequest req;
     public ArrayList<Voyage> voyage;
-    private static ServiceVoyage instance;
+
     public boolean resultOK;
-    private ServiceVoyage() {
-        req = new ConnectionRequest();
-    }
+
     public static ServiceVoyage getInstance() {
         if(instance== null)
             instance = new ServiceVoyage();
         return instance;
     }
+    
+    private ServiceVoyage() {
+        req = new ConnectionRequest();
+    }
+        
     public boolean AddVoyage(Voyage voyage)
     {
-       // String url = Statics.BASE_URL+"Create?Dest=DZ&NomVoy=Algerie&Duree=15%20jour&Prix=125&Valabilite=Non&image=ze";
-               String url = Statics.BASE_URL + "create";
-        
+        String url = Statics.BASE_URL+"/voyage/AddVoyageJSON?Destination="+voyage.getDestination()+"&NomVoyage="+voyage.getNom_Voyage()+"&DureeVoyage="+voyage.getDuree_Voyage()+"&PrixVoyage="+voyage.getPrix_Voyage()+"&Valabilite="+voyage.getValabilite()+"&Image="+voyage.getImage();
+             //  String url = Statics.BASE_URL + "create";
         req.setUrl(url);
-        req.setPost(false);
-        req.addArgument("Dest", voyage.getDestination());
-        req.addArgument("NomVoy", voyage.getNom_Voyage()+"");
-        req.addArgument("Duree", voyage.getDuree_Voyage()+"");
-        req.addArgument("Prix", voyage.getPrix_Voyage()+"");
-        req.addArgument("Valabilite", voyage.getValabilite()+"");
-        req.addArgument("image", voyage.getImage()+"");
-        req.addResponseListener(new ActionListener<NetworkEvent>() {
-            @Override
-            public void actionPerformed(NetworkEvent evt) {
-        resultOK = req.getResponseCode()==200;
-        req.removeResponseListener(this);            }
-        });
+    req.addResponseListener((e) -> {
+                        resultOK = req.getResponseCode() == 200; //Code HTTP 200 OK
+        String str = new String(req.getResponseData());
+        System.out.println("data"+str);
+    });
         NetworkManager.getInstance().addToQueueAndWait(req);
 return resultOK;
     }
@@ -75,7 +71,7 @@ return resultOK;
                 v.setDestination(obj.get("Dest").toString());
                 v.setNom_Voyage(obj.get("NomVoy").toString());
                 v.setDuree_Voyage(obj.get("Duree").toString());
-                v.setPrix_Voyage(0);
+                v.setPrix_Voyage((int) obj.get("Prix"));
                 v.setValabilite(obj.get("Valabilite").toString());
                 v.setImage(obj.get("image").toString());
                voyage.add(v);
@@ -91,7 +87,7 @@ return resultOK;
     public ArrayList<Voyage> getAllVoyage(){
         req = new ConnectionRequest();
         //String url = Statics.BASE_URL+"/tasks/";
-        String url = Statics.BASE_URL+"voyage/AllVoyageJSON";
+            String url = Statics.BASE_URL+"voyage/AllVoyageJSON";
         System.out.println("===>"+url);
         req.setUrl(url);
         req.setPost(false);
@@ -104,5 +100,21 @@ return resultOK;
         });
         NetworkManager.getInstance().addToQueueAndWait(req);
         return voyage;
+    }
+    
+    public boolean deletedEvent(int id) {
+
+        String url = Statics.BASE_URL + "deleteEvent/" + id + "";
+        req.setUrl(url);
+        req.setPost(true);
+        req.addResponseListener(new ActionListener<NetworkEvent>() {
+            @Override
+            public void actionPerformed(NetworkEvent evt) {
+                resultOK = req.getResponseCode() == 200;
+                req.removeResponseListener(this);
+            }
+        });
+        NetworkManager.getInstance().addToQueueAndWait(req);
+        return resultOK;
     }
 }

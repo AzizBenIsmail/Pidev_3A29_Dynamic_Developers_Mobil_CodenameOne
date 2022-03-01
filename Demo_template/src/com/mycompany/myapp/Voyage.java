@@ -21,14 +21,18 @@ Form current;
     public Voyage(Form previous) {
                 current=this; //Back 
         add(new Label("Welcom to Travel_Me"));
-        setTitle("homme Page ");
+        setTitle(" --Voyage-- ");
         setLayout(BoxLayout.y());
         
     Button BUTAdd = new Button("Add Voyage");
+    Button BUTMod = new Button("Modifier Voyage");
+    Button BUTSup = new Button("Supprimer Voyage");
     Button BUTShow = new Button("Show Voyage");
-BUTAdd.addActionListener((evt) -> new AddVoyage(current).show());
-BUTShow.addActionListener((evt) -> new ShowVoyage(current).show());
-        addAll(BUTAdd,BUTShow);
+    Button BUTCam = new Button("Camera ");
+    BUTAdd.addActionListener((evt) -> new AddVoyage(current).show());
+    //BUTCam.addActionListener((evt) -> new Camera().show());
+    BUTShow.addActionListener((evt) -> new ShowVoyage(current).show());
+        addAll(BUTAdd,BUTShow,BUTMod,BUTSup,BUTCam);
     
     getToolbar().addMaterialCommandToLeftBar("",FontImage.MATERIAL_ARROW_BACK, (evt) -> {
         previous.showBack();

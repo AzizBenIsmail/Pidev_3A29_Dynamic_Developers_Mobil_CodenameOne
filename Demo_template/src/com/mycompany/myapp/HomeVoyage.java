@@ -21,9 +21,8 @@ Form current;
                 current=this; //Back 
                 
         add(new Label("Welcom to Travel_Me"));
-        setTitle("Voyage ");
+        setTitle("Welcom to Travel_Me");
         setLayout(BoxLayout.y());
-        
     Button BUTVoyage = new Button("Voyage");
     Button BUTReclmataion = new Button("Reclamation");
     Button BUTExcursion = new Button("Excursion");
@@ -32,6 +31,10 @@ Form current;
     Button BUTProfil= new Button("Profil");
 BUTVoyage.addActionListener((evt) -> new Voyage(current).show());
 BUTProfil.addActionListener((evt) -> new ProfileForm(res).show());
+BUTRestaurant.addActionListener((evt) -> new Restaurant(current).show());
+BUTReclmataion.addActionListener((evt) -> new Reclamation(current).show());
+BUTCommentaire.addActionListener((evt) -> new Commentaire(current).show());
+
         addAll(BUTVoyage,BUTReclmataion,BUTExcursion,BUTRestaurant,BUTCommentaire,BUTProfil);
     
         

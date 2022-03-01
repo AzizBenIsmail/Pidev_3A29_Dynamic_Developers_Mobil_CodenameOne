@@ -14,7 +14,6 @@ import java.util.Date;
 public class Voyage {
     private int id,Prix_Voyage;
     private String Destination,Nom_Voyage,Duree_Voyage,valabilite,Image;
-    private Date date;
 
     public Voyage(int Prix_Voyage, String Destination, String Nom_Voyage, String Duree_Voyage, String valabilite, String Image) {
         this.Prix_Voyage = Prix_Voyage;
@@ -26,7 +25,7 @@ public class Voyage {
        // this.date = date;
     }
 
-    public Voyage(int id, int Prix_Voyage, String Destination, String Nom_Voyage, String Duree_Voyage, String valabilite, String Image, Date date) {
+    public Voyage(int id, int Prix_Voyage, String Destination, String Nom_Voyage, String Duree_Voyage, String valabilite, String Image) {
         this.id = id;
         this.Prix_Voyage = Prix_Voyage;
         this.Destination = Destination;
@@ -34,7 +33,7 @@ public class Voyage {
         this.Duree_Voyage = Duree_Voyage;
         this.valabilite = valabilite;
         this.Image = Image;
-        this.date = date;
+      //  this.date = date;
     }
 
     public Voyage() {
@@ -97,17 +96,11 @@ public class Voyage {
         this.Image = Image;
     }
 
-    public Date getDate() {
-        return date;
-    }
 
-    public void setDate(Date date) {
-        this.date = date;
-    }
 
     @Override
     public String toString() {
-        return "Voyage{" + "Prix_Voyage=" + Prix_Voyage + ", Destination=" + Destination + ", Nom_Voyage=" + Nom_Voyage + ", Duree_Voyage=" + Duree_Voyage + ", valabilite=" + valabilite + ", Image=" + Image + ", date=" + date + '}';
+        return "Voyage{" + "Prix_Voyage=" + Prix_Voyage + ", Destination=" + Destination + ", Nom_Voyage=" + Nom_Voyage + ", Duree_Voyage=" + Duree_Voyage + ", valabilite=" + valabilite + ", Image=" + Image +'}';
     }
     
 }
