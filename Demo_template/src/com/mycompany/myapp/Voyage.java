@@ -31,8 +31,9 @@ Form current;
     Button BUTCam = new Button("Camera ");
     BUTAdd.addActionListener((evt) -> new AddVoyage(current).show());
     BUTSup.addActionListener((evt) -> new SupprimerVoyage(current).show());
+    BUTMod.addActionListener((evt) -> new ModifierVoyage(current).show());
     BUTShow.addActionListener((evt) -> new ShowVoyage(current).show());
-        addAll(BUTAdd,BUTShow,BUTMod,BUTSup,BUTCam);
+        addAll(BUTAdd,BUTShow,BUTSup,BUTCam,BUTMod);
     
     getToolbar().addMaterialCommandToLeftBar("",FontImage.MATERIAL_ARROW_BACK, (evt) -> {
         previous.showBack();

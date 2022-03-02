@@ -14,6 +14,7 @@ import com.codename1.io.NetworkEvent;
 import com.codename1.io.NetworkManager;
 import com.codename1.l10n.SimpleDateFormat;
 import com.codename1.properties.UiBinding.DateConverter;
+import com.codename1.ui.Image;
 import com.codename1.ui.events.ActionListener;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -58,6 +59,19 @@ public class ServiceVoyage {
 return resultOK;
     }
     
+     public boolean UpdateVoyage(Voyage voyage,int id)
+    {
+        String url = Statics.BASE_URL+"/voyage/UpdateVoyageJSON/"+id+"?Destination="+voyage.getDestination()+"&NomVoyage="+voyage.getNom_Voyage()+"&DureeVoyage="+voyage.getDuree_Voyage()+"&PrixVoyage="+voyage.getPrix_Voyage()+"&Valabilite="+voyage.getValabilite()+"&Image="+voyage.getImage();
+             //  String url = Statics.BASE_URL + "create";
+        req.setUrl(url);
+    req.addResponseListener((e) -> {
+                        resultOK = req.getResponseCode() == 200; //Code HTTP 200 OK
+        String str = new String(req.getResponseData());
+        System.out.println("data"+str);
+    });
+        NetworkManager.getInstance().addToQueueAndWait(req);
+return resultOK;
+    }
     
     public ArrayList<Voyage> parseTasks(String jsonText){
         try {
@@ -86,24 +100,7 @@ return resultOK;
         }
         return voyage;
     }
-    
-    public ArrayList<Voyage> getAllVoyage(){
-        req = new ConnectionRequest();
-        //String url = Statics.BASE_URL+"/tasks/";
-            String url = Statics.BASE_URL+"voyage/AllVoyageJSON";
-        System.out.println("===>"+url);
-        req.setUrl(url);
-        req.setPost(false);
-        req.addResponseListener(new ActionListener<NetworkEvent>() {
-            @Override
-            public void actionPerformed(NetworkEvent evt) {
-                voyage = parseTasks(new String(req.getResponseData()));
-                req.removeResponseListener(this);
-            }
-        });
-        NetworkManager.getInstance().addToQueueAndWait(req);
-        return voyage;
-    }
+
     
     public boolean deletedVoyage(int id) {
 
