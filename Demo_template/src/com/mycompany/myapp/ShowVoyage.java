@@ -21,7 +21,7 @@ public class ShowVoyage extends Form {
         setTitle("Liste des Voyage");
         setLayout(BoxLayout.y());
          SpanLabel sp = new SpanLabel();
-        sp.setText(ServiceVoyage.getInstance().getAllVoyage().toString());
+        sp.setText(ServiceVoyage.getInstance().affichageVoyage().toString());
         add(sp);
         getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK, e -> previous.showBack());
 

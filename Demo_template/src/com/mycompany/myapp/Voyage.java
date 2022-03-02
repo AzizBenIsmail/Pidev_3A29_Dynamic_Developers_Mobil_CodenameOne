@@ -30,7 +30,7 @@ Form current;
     Button BUTShow = new Button("Show Voyage");
     Button BUTCam = new Button("Camera ");
     BUTAdd.addActionListener((evt) -> new AddVoyage(current).show());
-    //BUTCam.addActionListener((evt) -> new Camera().show());
+    BUTSup.addActionListener((evt) -> new SupprimerVoyage(current).show());
     BUTShow.addActionListener((evt) -> new ShowVoyage(current).show());
         addAll(BUTAdd,BUTShow,BUTMod,BUTSup,BUTCam);
     

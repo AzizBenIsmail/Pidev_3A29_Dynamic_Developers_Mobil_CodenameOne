@@ -13,8 +13,27 @@ import java.util.Date;
  */
 public class Voyage {
     private int id,Prix_Voyage;
-    private String Destination,Nom_Voyage,Duree_Voyage,valabilite,Image;
+    private String Destination,Nom_Voyage,Duree_Voyage,valabilite,Image,date;
 
+    public Voyage() {
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    @Override
+    public String toString() {
+        return "Voyage{" + "id=" + id + ", Prix_Voyage=" + Prix_Voyage + ", Destination=" + Destination + ", Nom_Voyage=" + Nom_Voyage + ", Duree_Voyage=" + Duree_Voyage + ", valabilite=" + valabilite + ", Image=" + Image + ", date=" + date + '}';
+    }
+    
+ public Voyage(int id) {
+        this.id = id;
+    }
     public Voyage(int Prix_Voyage, String Destination, String Nom_Voyage, String Duree_Voyage, String valabilite, String Image) {
         this.Prix_Voyage = Prix_Voyage;
         this.Destination = Destination;
@@ -36,9 +55,7 @@ public class Voyage {
       //  this.date = date;
     }
 
-    public Voyage() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+
 
     public int getId() {
         return id;
@@ -98,9 +115,6 @@ public class Voyage {
 
 
 
-    @Override
-    public String toString() {
-        return "Voyage{" + "Prix_Voyage=" + Prix_Voyage + ", Destination=" + Destination + ", Nom_Voyage=" + Nom_Voyage + ", Duree_Voyage=" + Duree_Voyage + ", valabilite=" + valabilite + ", Image=" + Image +'}';
-    }
+
     
 }

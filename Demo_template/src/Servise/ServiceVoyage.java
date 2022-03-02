@@ -12,9 +12,12 @@ import com.codename1.io.ConnectionRequest;
 import com.codename1.io.JSONParser;
 import com.codename1.io.NetworkEvent;
 import com.codename1.io.NetworkManager;
+import com.codename1.l10n.SimpleDateFormat;
+import com.codename1.properties.UiBinding.DateConverter;
 import com.codename1.ui.events.ActionListener;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -102,9 +105,9 @@ return resultOK;
         return voyage;
     }
     
-    public boolean deletedEvent(int id) {
+    public boolean deletedVoyage(int id) {
 
-        String url = Statics.BASE_URL + "deleteEvent/" + id + "";
+        String url = Statics.BASE_URL + "/voyage/DeleteVoyageJSON/" + id + "";
         req.setUrl(url);
         req.setPost(true);
         req.addResponseListener(new ActionListener<NetworkEvent>() {
@@ -116,5 +119,61 @@ return resultOK;
         });
         NetworkManager.getInstance().addToQueueAndWait(req);
         return resultOK;
+    }
+    
+    public ArrayList<Voyage> affichageVoyage() 
+     {
+        ArrayList<Voyage> result = new ArrayList<>();
+        String  url = Statics.BASE_URL +"/voyage/AllVoyageJSON";
+         req.setUrl(url);
+        req.addResponseListener(new ActionListener<NetworkEvent>() {
+            @Override
+            public void actionPerformed(NetworkEvent evt) {
+                JSONParser jsonp;                
+                jsonp = new JSONParser();
+                try {
+                    //renvoi une map avec clé = root et valeur le reste
+                    Map<String, Object> mapVoyage = jsonp.parseJSON(new CharArrayReader(new String(req.getResponseData()).toCharArray()));
+
+                    List<Map<String, Object>> listOfMaps = (List<Map<String, Object>>) mapVoyage.get("root");
+                      
+                    for (Map<String, Object> obj : listOfMaps) {
+                        Voyage v = new Voyage();
+                        int id = (int) Float.parseFloat(obj.get("id").toString());
+                        String Destination = obj.get("Destination").toString();
+                        String Nom_Voyage = obj.get("Nom_Voyage").toString();
+                        String Duree_Voyage = obj.get("Duree_Voyage").toString();
+                        int Prix_Voyage=(int)Float.parseFloat(obj.get("Prix_Voyage").toString());                          
+                          String valabilite = obj.get("valabilite").toString();
+                          String Image = obj.get("Image").toString();
+
+                        
+                        v.setId((int) id);
+                        v.setDestination(Destination);
+                        v.setNom_Voyage(Nom_Voyage);
+                        v.setPrix_Voyage((int) Prix_Voyage);
+                        v.setDuree_Voyage(Duree_Voyage);
+                        v.setImage(Image);
+                        v.setValabilite(valabilite);
+
+//                        String DateConverter=obj.get("date").toString().substring(obj.get("Date").toString().indexOf("timestamp")+10 , obj.get("Date").toString().lastIndexOf("}"));      
+   //             Date currentTime = new Date(Double.valueOf(DateConverter).longValue() * 1000);
+   //             SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+    //            String dateString = formatter.format(currentTime);
+    //            v.setDate(dateString);
+                result.add(v);
+                  
+                    }
+                } 
+
+       catch(Exception e ){
+                       e.printStackTrace();
+                   }
+            }           
+                });
+        
+         NetworkManager.getInstance().addToQueueAndWait(req);
+                             
+           return result;
     }
 }
