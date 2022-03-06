@@ -6,6 +6,7 @@
 package com.mycompany.myapp;
 
 import com.codename1.ui.Button;
+import com.codename1.ui.Container;
 import com.codename1.ui.Form;
 import com.codename1.ui.Label;
 import com.codename1.ui.layouts.BoxLayout;
@@ -29,11 +30,16 @@ Form current;
     Button BUTRestaurant= new Button("Restaurant");
     Button BUTCommentaire= new Button("Commentaire");
     Button BUTProfil= new Button("Profil");
+
+    
 BUTVoyage.addActionListener((evt) -> new Voyage(current).show());
 BUTProfil.addActionListener((evt) -> new ProfileForm(res).show());
 BUTRestaurant.addActionListener((evt) -> new Restaurant(current).show());
 BUTReclmataion.addActionListener((evt) -> new Reclamation(current).show());
 BUTCommentaire.addActionListener((evt) -> new Commentaire(current).show());
+//BUTCommentaire.addActionListener((evt) -> new cloc(current).show());
+
+
 
         addAll(BUTVoyage,BUTReclmataion,BUTExcursion,BUTRestaurant,BUTCommentaire,BUTProfil);
     

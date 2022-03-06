@@ -140,7 +140,7 @@ return resultOK;
                         String Destination = obj.get("Destination").toString();
                         String Nom_Voyage = obj.get("Nom_Voyage").toString();
                         String Duree_Voyage = obj.get("Duree_Voyage").toString();
-                        int Prix_Voyage=(int)Float.parseFloat(obj.get("Prix_Voyage").toString());                          
+                        int Prix_Voyage=(int)Float.parseFloat(obj.get("Prix").toString());                          
                           String valabilite = obj.get("valabilite").toString();
                           String Image = obj.get("Image").toString();
 
