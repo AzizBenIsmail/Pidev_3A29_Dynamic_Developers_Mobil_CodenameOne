@@ -19,16 +19,22 @@
 
 package com.mycompany.myapp;
 
+import Servise.ServiceVoyage;
+import Servise.ServiseExcusion;
+import Servise.ServiseRestaurant;
+import Utils.Statics;
 import com.codename1.components.FloatingActionButton;
 import com.codename1.components.MultiButton;
 import com.codename1.ui.Button;
 import com.codename1.ui.Container;
+import com.codename1.ui.EncodedImage;
 import com.codename1.ui.FontImage;
 import com.codename1.ui.Form;
 import com.codename1.ui.Graphics;
 import com.codename1.ui.Image;
 import com.codename1.ui.Label;
 import com.codename1.ui.Toolbar;
+import com.codename1.ui.URLImage;
 import com.codename1.ui.events.ActionEvent;
 import com.codename1.ui.events.ActionListener;
 import com.codename1.ui.layouts.BorderLayout;
@@ -37,6 +43,7 @@ import com.codename1.ui.layouts.FlowLayout;
 import com.codename1.ui.layouts.GridLayout;
 import com.codename1.ui.plaf.Style;
 import com.codename1.ui.util.Resources;
+import java.util.ArrayList;
 
 /**
  * Represents a user profile in the app, the first form we open after the walkthru
@@ -60,16 +67,6 @@ public class ProfileForm extends SideMenuBaseForm {
         FontImage.setMaterialIcon(menuButton, FontImage.MATERIAL_MENU);
         menuButton.addActionListener(e -> getToolbar().openSideMenu());
         
-        Container remainingTasks = BoxLayout.encloseY(
-                        new Label("12", "CenterTitle"),
-                        new Label("remaining tasks", "CenterSubTitle")
-                );
-        remainingTasks.setUIID("RemainingTasks");
-        Container completedTasks = BoxLayout.encloseY(
-                        new Label("32", "CenterTitle"),
-                        new Label("completed tasks", "CenterSubTitle")
-        );
-        completedTasks.setUIID("CompletedTasks"); 
         
         Container titleCmp = BoxLayout.encloseY(
                         FlowLayout.encloseIn(menuButton),
@@ -78,25 +75,104 @@ public class ProfileForm extends SideMenuBaseForm {
                                     new Label("Aziz Ben Ismail", "Title"),
                                     new Label("Travel me", "SubTitle")
                                 )
-                            ).add(BorderLayout.WEST, profilePicLabel),
-                        GridLayout.encloseIn(2, remainingTasks, completedTasks)
+                            ).add(BorderLayout.WEST, profilePicLabel)
                 );
         
         FloatingActionButton fab = FloatingActionButton.createFAB(FontImage.MATERIAL_ADD);
-        fab.getAllStyles().setMarginUnit(Style.UNIT_TYPE_PIXELS);
-        fab.getAllStyles().setMargin(BOTTOM, completedTasks.getPreferredH() - fab.getPreferredH() / 2);
         tb.setTitleComponent(fab.bindFabToContainer(titleCmp, CENTER, BOTTOM));
                         
         add(new Label("Today", "TodayTitle"));
         
         FontImage arrowDown = FontImage.createMaterial(FontImage.MATERIAL_KEYBOARD_ARROW_DOWN, "Label", 3);
         
-        addButtonBottom(arrowDown, "Finish landing page concept", 0xd997f1, true);
-        addButtonBottom(arrowDown, "Design app illustrations", 0x5ae29d, false);
-        addButtonBottom(arrowDown, "Javascript training ", 0x4dc2ff, false);
-        addButtonBottom(arrowDown, "Surprise Party for Matt", 0xffc06f, false);
+       // addButtonBottom(arrowDown, "Finish landing page concept", 0xd997f1, true);
+        
+        //listVoyage
+        
+        addButtonBottom(arrowDown, "La Liste Des Voyage", 0x5ae29d, false);
+       
+        ArrayList<Entity.Voyage> voyages = ServiceVoyage.getInstance().affichageVoyage();
+        Container listVoyage = new Container(BoxLayout.y());
+         listVoyage.setScrollableY(true);
+        for (Entity.Voyage voyage : voyages) {
+            
+              EncodedImage placeholder = EncodedImage.createFromImage(Image.createImage(50, 50, 0xffff0000), true);
+              Image i = URLImage.createToStorage(placeholder,voyage.getImage(),Statics.BASE_URL+"/uploads/"+voyage.getImage());
+             MultiButton sp = new MultiButton(voyage.getNom_Voyage());
+             sp.setIcon(i.fill(200, 200));
+              sp.setTextLine1("Destination : "+voyage.getDestination()+" Prix : "+voyage.getPrix_Voyage());
+              sp.setTextLine2("Durèe : "+voyage.getDuree_Voyage());
+                     listVoyage.add(sp);
+                     
+                     sp.addActionListener((evt) -> {
+                         //affichage en details details(voyage).show(); 
+                         //autre page 
+                         //ajouter panier 
+                     });
+        }
+        
+         //SpanLabel sp = new SpanLabel();
+        //sp.setText(ServiceVoyage.getInstance().affichageVoyage().toString());
+        this.add(listVoyage);
+        
+        //La Liste Des Restaurant
+        
+        addButtonBottom(arrowDown, "La Liste Des Restaurant ", 0x4dc2ff, false);
+        
+        ArrayList<Entity.Restaurant> restaurants = ServiseRestaurant.getInstance().affichageRestaurant();
+        Container listrestaurant = new Container(BoxLayout.y());
+         listrestaurant.setScrollableY(true);
+        for (Entity.Restaurant restaurant : restaurants) {
+            
+              EncodedImage placeholder = EncodedImage.createFromImage(Image.createImage(50, 50, 0xffff0000), true);
+              Image i = URLImage.createToStorage(placeholder,restaurant.getImage(),Statics.BASE_URL+"/uploads/"+restaurant.getImage());
+             MultiButton sp = new MultiButton(restaurant.getAdresse_Restaurant());
+             sp.setIcon(i.fill(200, 200));
+              sp.setTextLine1("Nom : "+restaurant.getNom_Restaurant());
+              sp.setTextLine2("Adresse : "+restaurant.getAdresse_Restaurant());
+                     listrestaurant.add(sp);
+                     
+                     sp.addActionListener((evt) -> {
+                         //affichage en details details(voyage).show(); 
+                         //autre page 
+                         //ajouter panier 
+                     });
+        }
+        
+         //SpanLabel sp = new SpanLabel();
+        //sp.setText(ServiceVoyage.getInstance().affichageVoyage().toString());
+        this.add(listrestaurant); 
+        
+        //La Liste Des Excursions
+       
+        addButtonBottom(arrowDown, "La Liste Des Excursions", 0xffc06f, false);
+        
         setupSideMenu(res);
     
+        ArrayList<Entity.Excursion> Excursions = ServiseExcusion.getInstance().affichageExcursion();
+        Container listExcursion = new Container(BoxLayout.y());
+         listExcursion.setScrollableY(true);
+        for (Entity.Excursion Excursion : Excursions) {
+            
+              EncodedImage placeholder = EncodedImage.createFromImage(Image.createImage(50, 50, 0xffff0000), true);
+              Image i = URLImage.createToStorage(placeholder,Excursion.getImage(),Statics.BASE_URL+"/uploads/"+Excursion.getImage());
+             MultiButton sp = new MultiButton(Excursion.getDescription_Excursion());
+             sp.setIcon(i.fill(200, 200));
+              sp.setTextLine1("Nom : "+Excursion.getNom_Excursion()+" Lieu : "+Excursion.getLieu());
+              sp.setTextLine2("Type : "+Excursion.getType_Excursion()+" | Prix : "+Excursion.getPrix());
+                     listExcursion.add(sp);
+                     
+                     sp.addActionListener((evt) -> {
+                         //affichage en details details(voyage).show(); 
+                         //autre page 
+                         //ajouter panier 
+                     });
+        }
+        
+         //SpanLabel sp = new SpanLabel();
+        //sp.setText(ServiceVoyage.getInstance().affichageVoyage().toString());
+        this.add(listExcursion); 
+
    
     
     }

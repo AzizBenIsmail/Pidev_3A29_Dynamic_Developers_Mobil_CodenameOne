@@ -36,8 +36,8 @@ public class ShowExcursion  extends Form {
               Image i = URLImage.createToStorage(placeholder,Excursion.getImage(),Statics.BASE_URL+"/uploads/"+Excursion.getImage());
              MultiButton sp = new MultiButton(Excursion.getDescription_Excursion());
              sp.setIcon(i.fill(200, 200));
-              sp.setTextLine1("Nom : "+Excursion.getNom_Excursion()+"Lieu : "+Excursion.getLieu());
-              sp.setTextLine2("Type : "+Excursion.getType_Excursion()+"Prix : "+Excursion.getPrix());
+              sp.setTextLine1("Nom : "+Excursion.getNom_Excursion()+" Lieu : "+Excursion.getLieu());
+              sp.setTextLine2("Type : "+Excursion.getType_Excursion()+" | Prix : "+Excursion.getPrix());
                      list.add(sp);
                      
                      sp.addActionListener((evt) -> {
