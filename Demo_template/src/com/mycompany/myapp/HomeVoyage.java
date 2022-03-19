@@ -5,12 +5,18 @@
  */
 package com.mycompany.myapp;
 
+import Gui.Excursion.Excursion;
+import Gui.Restaurant.Restaurant;
+import Gui.Voyage.Voyage;
 import com.codename1.ui.Button;
 import com.codename1.ui.Container;
 import com.codename1.ui.Form;
 import com.codename1.ui.Label;
 import com.codename1.ui.layouts.BoxLayout;
 import com.codename1.ui.util.Resources;
+import com.mycompany.myapp.Commentaire;
+import com.mycompany.myapp.ProfileForm;
+import com.mycompany.myapp.Reclamation;
 
 /**
  *
@@ -35,6 +41,7 @@ Form current;
 BUTVoyage.addActionListener((evt) -> new Voyage(current).show());
 BUTProfil.addActionListener((evt) -> new ProfileForm(res).show());
 BUTRestaurant.addActionListener((evt) -> new Restaurant(current).show());
+BUTExcursion.addActionListener((evt) -> new Excursion(current).show());
 BUTReclmataion.addActionListener((evt) -> new Reclamation(current).show());
 BUTCommentaire.addActionListener((evt) -> new Commentaire(current).show());
 //BUTCommentaire.addActionListener((evt) -> new cloc(current).show());

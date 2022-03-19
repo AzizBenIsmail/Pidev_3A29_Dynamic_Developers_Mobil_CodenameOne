@@ -19,6 +19,7 @@
 
 package com.mycompany.myapp;
 
+import Gui.Voyage.Voyage;
 import com.codename1.components.ToastBar;
 import com.codename1.ui.Container;
 import com.codename1.ui.FontImage;
