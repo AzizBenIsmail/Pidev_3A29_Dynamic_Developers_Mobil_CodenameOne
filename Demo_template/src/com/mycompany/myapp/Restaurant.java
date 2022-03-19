@@ -26,7 +26,7 @@ Form current;
     Button BUTAdd = new Button("Add Restaurant");
     Button BUTShow = new Button("Show Restaurant");
     //Button BUTCam = new Button("Camera ");
-   // BUTAdd.addActionListener((evt) -> new AddVoyage(current).show());
+    BUTShow.addActionListener((evt) -> new ShowRestaurant(current).show());
     //BUTCam.addActionListener((evt) -> new Camera().show());
   //  BUTShow.addActionListener((evt) -> new ShowVoyage(current).show());
         addAll(BUTAdd,BUTShow);
