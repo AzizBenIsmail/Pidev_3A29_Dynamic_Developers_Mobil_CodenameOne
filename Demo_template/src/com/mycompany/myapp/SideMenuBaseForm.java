@@ -20,6 +20,8 @@
 package com.mycompany.myapp;
 
 
+import Gui.Excursion.Excursion;
+import Gui.Restaurant.Restaurant;
 import Gui.Voyage.VoyageHome;
 import com.codename1.components.ToastBar;
 import com.codename1.ui.Container;
@@ -67,9 +69,10 @@ public abstract class SideMenuBaseForm extends Form {
         sidemenuTop.setUIID("SidemenuTop");
         
         getToolbar().addComponentToSideMenu(sidemenuTop);
-        getToolbar().addMaterialCommandToSideMenu("  Dashboard", FontImage.MATERIAL_DASHBOARD,  e -> showOtherForm(res));
-        getToolbar().addMaterialCommandToSideMenu("  Voyage", FontImage.MATERIAL_TRENDING_UP,  e -> new VoyageHome(res,current).show());
-        getToolbar().addMaterialCommandToSideMenu("  Tasks", FontImage.MATERIAL_LANGUAGE,  e -> new HomeVoyage(res).show());
+        getToolbar().addMaterialCommandToSideMenu("  Voyage", FontImage.MATERIAL_FLIGHT_TAKEOFF,  e -> new VoyageHome(res,current).show());
+        getToolbar().addMaterialCommandToSideMenu("  Restaurant", FontImage.MATERIAL_DINING,  e -> new Restaurant(res,current).show());
+        getToolbar().addMaterialCommandToSideMenu("  Excursion", FontImage.MATERIAL_GRASS,  e -> new Excursion(res,current).show());
+        getToolbar().addMaterialCommandToSideMenu("  Menu", FontImage.MATERIAL_MENU,  e -> new HomeVoyage(res).show());
         getToolbar().addMaterialCommandToSideMenu("  Account Settings", FontImage.MATERIAL_SETTINGS,  e -> showOtherForm(res));
         getToolbar().addMaterialCommandToSideMenu("  Logout", FontImage.MATERIAL_EXIT_TO_APP,  e -> new LoginForm(res).show());
 

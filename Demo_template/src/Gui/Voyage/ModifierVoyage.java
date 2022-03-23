@@ -28,12 +28,19 @@ public class ModifierVoyage extends Form {
         setTitle("Add Voyage");
         setLayout(BoxLayout.y());
         TextField ID = new TextField("", "ID");
+                        ID.getStyle().setFgColor(154245);
         TextField Destination = new TextField("", "Destination");
+                        Destination.getStyle().setFgColor(154245);
         TextField Nom_Voyage = new TextField("", "Nom_Voyage");
+                        Nom_Voyage.getStyle().setFgColor(154245);
         TextField Duree_Voyage = new TextField("", "Duree_Voyage");
+                        Duree_Voyage.getStyle().setFgColor(154245);
         TextField Prix = new TextField("", "Prix");
+                        Prix.getStyle().setFgColor(154245);
         TextField Valabilite = new TextField("", "Valabilite");
+                    Valabilite.getStyle().setFgColor(154245);
         TextField image = new TextField("", "image");
+                            image.getStyle().setFgColor(154245);
         Button btnValider = new Button("Valider");
         btnValider.addActionListener(new ActionListener() {
             @Override

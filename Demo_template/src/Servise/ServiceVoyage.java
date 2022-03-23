@@ -114,7 +114,7 @@ return resultOK;
                 req.removeResponseListener(this);
             }
         });
-        NetworkManager.getInstance().addToQueueAndWait(req);
+            NetworkManager.getInstance().addToQueueAndWait(req);
         return resultOK;
     }
     

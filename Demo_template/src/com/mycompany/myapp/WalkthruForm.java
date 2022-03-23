@@ -44,8 +44,11 @@ import com.codename1.ui.util.Resources;
  * @author Shai Almog
  */
 public class WalkthruForm extends Form {
+    Form current;
     public WalkthruForm(Resources res) {
         super(new LayeredLayout());
+                        current=this; //Back 
+
         getTitleArea().removeAll();
         getTitleArea().setUIID("Container");
         
@@ -183,7 +186,7 @@ public class WalkthruForm extends Form {
         
         Button skip = new Button("Next");
         skip.setUIID("SkipButton");
-        skip.addActionListener(e -> new HomeVoyage(res).show());
+        skip.addActionListener(e -> new ProfileForm(res,current).show());
         
         Container southLayout = BoxLayout.encloseY(
                         radioContainer,

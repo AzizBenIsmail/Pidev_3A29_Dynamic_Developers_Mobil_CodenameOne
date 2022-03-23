@@ -19,6 +19,7 @@
 
 package com.mycompany.myapp;
 
+import Gui.ReserverVoyage.AddResrvationVoyage;
 import Servise.ServiceVoyage;
 import Servise.ServiseExcusion;
 import Servise.ServiseRestaurant;
@@ -106,9 +107,7 @@ public class ProfileForm extends SideMenuBaseForm {
                      listVoyage.add(sp);
                      
                      sp.addActionListener((evt) -> {
-                         //affichage en details details(voyage).show(); 
-                         //autre page 
-                         //ajouter panier 
+                                        new AddResrvationVoyage(current,voyage).show();
                      });
         }
         

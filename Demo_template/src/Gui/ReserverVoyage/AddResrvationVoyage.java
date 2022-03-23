@@ -33,9 +33,11 @@ public class AddResrvationVoyage extends Form  {
      setTitle("Add ResrvationVoyage");
         setLayout(BoxLayout.y());
         TextField Client = new TextField("", "Client");
-        Client.getStyle().setFgColor(154245);
+                 Client.getStyle().setFgColor(154245);
         TextField Travel_Class = new TextField("", "Travel_Class");
+                Travel_Class.getStyle().setFgColor(154245);
         TextField Age = new TextField("", "Age");
+                Travel_Class.getStyle().setFgColor(154245);
         Button btnValider = new Button("Valider");
         btnValider.addActionListener(new ActionListener() {
             @Override

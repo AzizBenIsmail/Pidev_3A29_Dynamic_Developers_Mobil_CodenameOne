@@ -27,6 +27,7 @@
             setTitle("Add Voyage");
             setLayout(BoxLayout.y());
             TextField ID = new TextField("", "ID");
+                                    ID.getStyle().setFgColor(154245);
             Button btnValider = new Button("Valider");
             btnValider.addActionListener(new ActionListener() {
                 @Override

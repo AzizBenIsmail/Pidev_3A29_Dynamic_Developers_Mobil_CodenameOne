@@ -37,7 +37,7 @@ public class VoyageHome extends Form{
     BUTSup.addActionListener((evt) -> new SupprimerVoyage(current).show());
     BUTMod.addActionListener((evt) -> new ModifierVoyage(current).show());
     BUTShow.addActionListener((evt) -> new ShowVoyage(current).show());
-        addAll(BUTAdd,BUTShow,BUTSup,BUTCam,BUTMod);
+        addAll(BUTShow,BUTAdd,BUTMod,BUTSup);
     
     getToolbar().addMaterialCommandToLeftBar("",FontImage.MATERIAL_ARROW_BACK, (evt) -> {
         new ProfileForm(res,this).show();
