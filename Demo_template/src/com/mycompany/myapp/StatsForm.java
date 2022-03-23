@@ -141,7 +141,7 @@ public class StatsForm extends SideMenuBaseForm {
     
     @Override
     protected void showOtherForm(Resources res) {
-        new ProfileForm(res).show();
+        new ProfileForm(res,this).show();
     }
 
     private XYMultipleSeriesRenderer createChartMultiRenderer() {

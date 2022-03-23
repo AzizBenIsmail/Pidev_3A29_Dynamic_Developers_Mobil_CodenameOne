@@ -5,11 +5,13 @@
  */
 package Gui.Voyage;
 
+import Gui.ReserverVoyage.AddResrvationVoyage;
 import com.mycompany.myapp.*;
 import Servise.ServiceVoyage;
 import Utils.Statics;
 import com.codename1.components.MultiButton;
 import com.codename1.components.SpanLabel;
+import com.codename1.ui.Button;
 import com.codename1.ui.Container;
 import com.codename1.ui.EncodedImage;
 import com.codename1.ui.FontImage;
@@ -25,8 +27,9 @@ import java.util.List;
  * @author ASUS
  */
 public class ShowVoyage extends Form {
-
-    public ShowVoyage(Form previous) {
+    Form current;
+    public ShowVoyage(Form previous) { 
+        current =this;
         setTitle("Liste des Voyage");
         setLayout(BoxLayout.y());
         ArrayList<Entity.Voyage> voyages = ServiceVoyage.getInstance().affichageVoyage();
@@ -41,11 +44,9 @@ public class ShowVoyage extends Form {
               sp.setTextLine1("Destination : "+voyage.getDestination()+" Prix : "+voyage.getPrix_Voyage());
               sp.setTextLine2("Durèe : "+voyage.getDuree_Voyage());
                      list.add(sp);
-                     
                      sp.addActionListener((evt) -> {
-                         //affichage en details details(voyage).show(); 
-                         //autre page 
-                         //ajouter panier 
+                         System.out.println("reserver");
+                                        new AddResrvationVoyage(current,voyage).show();
                      });
         }
         

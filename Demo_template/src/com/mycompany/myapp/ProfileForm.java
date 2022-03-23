@@ -51,9 +51,10 @@ import java.util.ArrayList;
  * @author Shai Almog
  */
 public class ProfileForm extends SideMenuBaseForm {
-   
-    public ProfileForm(Resources res) {
-        super(BoxLayout.y());
+       Form current;
+    public ProfileForm(Resources res,Form previous) {
+                super(BoxLayout.y());
+        current=this;
         Toolbar tb = getToolbar();
         tb.setTitleCentered(false);
         Image profilePic = res.getImage("2.png");

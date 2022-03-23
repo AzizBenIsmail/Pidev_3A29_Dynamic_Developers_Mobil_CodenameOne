@@ -6,8 +6,9 @@
 package com.mycompany.myapp;
 
 import Gui.Excursion.Excursion;
+import Gui.ReserverVoyage.ShowReservationVoyage;
 import Gui.Restaurant.Restaurant;
-import Gui.Voyage.Voyage;
+import Gui.Voyage.VoyageHome;
 import com.codename1.ui.Button;
 import com.codename1.ui.Container;
 import com.codename1.ui.Form;
@@ -36,19 +37,20 @@ Form current;
     Button BUTRestaurant= new Button("Restaurant");
     Button BUTCommentaire= new Button("Commentaire");
     Button BUTProfil= new Button("Profil");
+    Button BUTReservationVoyage= new Button("ReservationVoyage");
 
     
-BUTVoyage.addActionListener((evt) -> new Voyage(current).show());
-BUTProfil.addActionListener((evt) -> new ProfileForm(res).show());
+BUTVoyage.addActionListener((evt) -> new VoyageHome(res,current).show());
+BUTProfil.addActionListener((evt) -> new ProfileForm(res,current).show());
 BUTRestaurant.addActionListener((evt) -> new Restaurant(current).show());
 BUTExcursion.addActionListener((evt) -> new Excursion(current).show());
 BUTReclmataion.addActionListener((evt) -> new Reclamation(current).show());
 BUTCommentaire.addActionListener((evt) -> new Commentaire(current).show());
-//BUTCommentaire.addActionListener((evt) -> new cloc(current).show());
+BUTReservationVoyage.addActionListener((evt) -> new ShowReservationVoyage(current).show());
 
 
 
-        addAll(BUTVoyage,BUTReclmataion,BUTExcursion,BUTRestaurant,BUTCommentaire,BUTProfil);
+        addAll(BUTVoyage,BUTReclmataion,BUTExcursion,BUTRestaurant,BUTCommentaire,BUTProfil,BUTReservationVoyage);
     
         
     }
