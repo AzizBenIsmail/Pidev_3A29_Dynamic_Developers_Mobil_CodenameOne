@@ -28,10 +28,23 @@ import java.util.List;
  */
 public class ShowVoyage extends Form {
     Form current;
-    public ShowVoyage(Form previous) { 
+        int n=0;
+    public ShowVoyage(Form previous,int n) { 
         current =this;
         setTitle("Liste des Voyage");
-        setLayout(BoxLayout.y());
+                setLayout(BoxLayout.y());
+
+            Button BUTActualiser = new Button("Actualiser");
+        BUTActualiser.addActionListener((evt) -> new ShowVoyage(current,0).show());
+            Button BUTTrieNom = new Button("Trie selon Nom ");
+         BUTTrieNom.addActionListener((evt) -> new ShowVoyage(current,1).show());
+            Button BUTTriePrix = new Button("Trie selon Prix ");
+        BUTTriePrix.addActionListener((evt) -> new ShowVoyage(current,2).show());
+            Button BUTTrieDest = new Button("Trie selon Dest ");
+        BUTTrieDest.addActionListener((evt) -> new ShowVoyage(current,3).show());
+            addAll(BUTTrieNom,BUTTriePrix,BUTTrieDest,BUTActualiser);
+            if(n==0)
+            {
         ArrayList<Entity.Voyage> voyages = ServiceVoyage.getInstance().affichageVoyage();
         Container list = new Container(BoxLayout.y());
          list.setScrollableY(true);
@@ -53,6 +66,7 @@ public class ShowVoyage extends Form {
          //SpanLabel sp = new SpanLabel();
         //sp.setText(ServiceVoyage.getInstance().affichageVoyage().toString());
         this.add(list);
+            }
         getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK, e -> previous.showBack());
 
     }

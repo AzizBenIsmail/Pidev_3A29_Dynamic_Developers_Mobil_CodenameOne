@@ -6,6 +6,7 @@
 package com.mycompany.myapp;
 
 import Gui.Excursion.Excursion;
+import Gui.MapForm;
 import Gui.ReserverVoyage.ShowReservationVoyage;
 import Gui.Restaurant.Restaurant;
 import Gui.Voyage.VoyageHome;
@@ -25,6 +26,7 @@ import com.mycompany.myapp.Reclamation;
  */
 public class HomeVoyage extends Form{
 Form current;
+private Resources theme;
     public HomeVoyage(Resources res) {
                 current=this; //Back 
                 
@@ -40,7 +42,7 @@ Form current;
     Button BUTReservationVoyage= new Button("ReservationVoyage");
     Button BUTReservationExcursion= new Button("ReservationExcursion");
     Button BUTReservationRestaurant= new Button("ReservationRestaurant");
-
+    Button MapForm= new Button("MapForm");
     
 BUTVoyage.addActionListener((evt) -> new VoyageHome(res,current).show());
 BUTProfil.addActionListener((evt) -> new ProfileForm(res,current).show());
@@ -49,10 +51,11 @@ BUTExcursion.addActionListener((evt) -> new Excursion(res,current).show());
 BUTReclmataion.addActionListener((evt) -> new Reclamation(current).show());
 BUTCommentaire.addActionListener((evt) -> new Commentaire(current).show());
 BUTReservationVoyage.addActionListener((evt) -> new ShowReservationVoyage(current).show());
+MapForm.addActionListener((evt) -> new MapForm(theme,current));
 
 
 
-        addAll(BUTProfil,BUTVoyage,BUTExcursion,BUTRestaurant,BUTReclmataion,BUTCommentaire,BUTReservationVoyage,BUTReservationRestaurant,BUTReservationExcursion);
+        addAll(BUTProfil,BUTVoyage,BUTExcursion,BUTRestaurant,BUTReclmataion,BUTCommentaire,BUTReservationVoyage,BUTReservationRestaurant,BUTReservationExcursion,MapForm);
     
         
     }
