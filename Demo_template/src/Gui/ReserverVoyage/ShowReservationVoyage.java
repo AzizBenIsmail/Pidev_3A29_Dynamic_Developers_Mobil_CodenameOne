@@ -40,8 +40,9 @@ public class ShowReservationVoyage extends Form {
               Image i = URLImage.createToStorage(placeholder,ReserverVoyage.getVoyage().getImage(),Statics.BASE_URL+"/uploads/"+ReserverVoyage.getVoyage().getImage());
              MultiButton sp = new MultiButton(ReserverVoyage.getTravel_Class());
                           sp.setIcon(i.fill(200, 200));
-              sp.setTextLine1("Travel_Class : "+ReserverVoyage.getTravel_Class());
-              sp.setTextLine2("Age : "+ReserverVoyage.getAge());
+              sp.setTextLine1("Vous aver reserver le Voyage : "+ReserverVoyage.getVoyage().getNom_Voyage());
+              sp.setTextLine2("Travel_Class : "+ReserverVoyage.getTravel_Class());
+              sp.setTextLine3("Age : "+ReserverVoyage.getAge());    
                      list.add(sp);
                      
                      sp.addActionListener((evt) -> {

@@ -14,11 +14,14 @@ import com.codename1.io.JSONParser;
 import com.codename1.io.NetworkManager;
 import com.codename1.maps.Coord;
 import com.codename1.ui.Button;
+import com.codename1.ui.ComboBox;
 import com.codename1.ui.Container;
 import com.codename1.ui.Display;
 import com.codename1.ui.EncodedImage;
 import com.codename1.ui.FontImage;
 import com.codename1.ui.Form;
+import com.codename1.ui.events.ActionEvent;
+import com.codename1.ui.events.ActionListener;
 import com.codename1.ui.geom.Dimension;
 import com.codename1.ui.layouts.BorderLayout;
 import com.codename1.ui.plaf.Style;
@@ -41,11 +44,35 @@ public MapFormVoyage(Resources theme,Form previous,ReserverVoyage ReserverVoyag)
     }catch(Exception ex) {
         ex.printStackTrace();
     }
-
-    Button btnMoveCamera = new Button("Mon Pays");
-        btnMoveCamera.addActionListener(e->{
-            cnt.setCameraPosition(new Coord(36.8189700, 10.1657900));
+                cnt.setCameraPosition(new Coord(36.8189700, 10.1657900));
+ComboBox cb = new ComboBox();
+        cb.addItem("Afrique");
+        cb.addItem("Europe");
+        cb.addItem("Amerique");
+        cb.addItem("Asia");
+        
+         cb.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent evt) {
+                if(cb.getSelectedIndex()==1)
+                {
+            cnt.setCameraPosition(new Coord(51.6632707,32.4525173));
+                }
+                if(cb.getSelectedIndex()==2)
+                {
+            cnt.setCameraPosition(new Coord(21.3550633,-92.0543545));
+                }
+                if(cb.getSelectedIndex()==3)
+                {
+            cnt.setCameraPosition(new Coord(34.4484268,86.033188));
+                }
+                 if(cb.getSelectedIndex()==4)
+                {
+            cnt.setCameraPosition(new Coord(37.2738718,-104.6794969));
+                }
+            }
         });
+
         Style s = new Style();
         s.setFgColor(0xff0000);
         s.setBgTransparency(0);
@@ -55,9 +82,7 @@ public MapFormVoyage(Resources theme,Form previous,ReserverVoyage ReserverVoyag)
     
 
 
-        cnt.addTapListener(e->{
-    
-            
+        cnt.addTapListener(e->{        
                 cnt.clearMapLayers();
                 cnt.addMarker(
                         EncodedImage.createFromImage(markerImg, false),
@@ -99,7 +124,8 @@ public MapFormVoyage(Resources theme,Form previous,ReserverVoyage ReserverVoyag)
         Container root = new Container();
          f.setLayout(new BorderLayout());
          f.addComponent(BorderLayout.CENTER, cnt);
-         f.addComponent(BorderLayout.SOUTH, btnMoveCamera);
+         f.addComponent(BorderLayout.SOUTH, cb  );
+         
 f.show();
  //f.getToolbar().addCommandToRightBar("back", null, (ev)->{ new AjoutReclamationForm(f).show()});
         f.getToolbar().addMaterialCommandToLeftBar("",FontImage.MATERIAL_ARROW_BACK, (evt) -> {
