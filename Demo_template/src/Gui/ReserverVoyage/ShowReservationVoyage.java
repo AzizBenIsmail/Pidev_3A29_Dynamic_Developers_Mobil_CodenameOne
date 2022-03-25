@@ -5,6 +5,7 @@
  */
 package Gui.ReserverVoyage;
 
+import Entity.ReserverVoyage;
 import Servise.ServiseResrverVoyage;
 import Servise.ServiseRestaurant;
 import Utils.Statics;
@@ -16,6 +17,7 @@ import com.codename1.ui.Form;
 import com.codename1.ui.Image;
 import com.codename1.ui.URLImage;
 import com.codename1.ui.layouts.BoxLayout;
+import com.codename1.ui.util.Resources;
 import java.util.ArrayList;
 
 /**
@@ -24,8 +26,9 @@ import java.util.ArrayList;
  */
 public class ShowReservationVoyage extends Form {
     Form current;
+            private Resources theme;
     public ShowReservationVoyage(Form previous) {
-        
+        current=this;
            setTitle("Liste des Reservation des Voyages");
         setLayout(BoxLayout.y());
         ArrayList<Entity.ReserverVoyage> ReserverVoyages = ServiseResrverVoyage.getInstance().affichageReserverVoyage();
@@ -43,10 +46,7 @@ public class ShowReservationVoyage extends Form {
                      
                      sp.addActionListener((evt) -> {
                          
-                         // details
-                         //affichage en details details(voyage).show(); 
-                         //autre page 
-                         //ajouter panier 
+                       new MapFormVoyage(theme,current,ReserverVoyage);
                      });
         }
         
