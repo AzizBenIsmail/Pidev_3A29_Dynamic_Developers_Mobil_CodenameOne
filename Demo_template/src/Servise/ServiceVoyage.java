@@ -59,9 +59,9 @@ public class ServiceVoyage {
 return resultOK;
     }
     
-     public boolean UpdateVoyage(Voyage voyage,int id)
+     public boolean UpdateVoyage(Voyage voyage)
     {
-        String url = Statics.BASE_URL+"/voyage/UpdateVoyageJSON/"+id+"?Destination="+voyage.getDestination()+"&NomVoyage="+voyage.getNom_Voyage()+"&DureeVoyage="+voyage.getDuree_Voyage()+"&PrixVoyage="+voyage.getPrix_Voyage()+"&Valabilite="+voyage.getValabilite()+"&Image="+voyage.getImage();
+        String url = Statics.BASE_URL+"/voyage/UpdateVoyageJSON/"+voyage.getId()+"?Destination="+voyage.getDestination()+"&NomVoyage="+voyage.getNom_Voyage()+"&DureeVoyage="+voyage.getDuree_Voyage()+"&PrixVoyage="+voyage.getPrix_Voyage()+"&Valabilite="+voyage.getValabilite()+"&Image="+voyage.getImage();
              //  String url = Statics.BASE_URL + "create";
         req.setUrl(url);
     req.addResponseListener((e) -> {
@@ -177,7 +177,7 @@ return resultOK;
     public ArrayList<Voyage> order_By_NomJSON() 
      {
         ArrayList<Voyage> result = new ArrayList<>();
-        String  url = Statics.BASE_URL +"/voyage/order_By_NomJSON";
+            String  url = Statics.BASE_URL +"/voyage/order_By_NomJSON";
          req.setUrl(url);
         req.addResponseListener(new ActionListener<NetworkEvent>() {
             @Override

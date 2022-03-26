@@ -34,7 +34,6 @@ private Resources theme;
         setTitle("Welcom to Travel_Me");
         setLayout(BoxLayout.y());
     Button BUTProfil= new Button("Profil");
-    Button BUTVoyage = new Button("Voyage");
     Button BUTReclmataion = new Button("Reclamation");
     Button BUTExcursion = new Button("Excursion");
     Button BUTRestaurant= new Button("Restaurant");
@@ -42,20 +41,17 @@ private Resources theme;
     Button BUTReservationVoyage= new Button("ReservationVoyage");
     Button BUTReservationExcursion= new Button("ReservationExcursion");
     Button BUTReservationRestaurant= new Button("ReservationRestaurant");
-    Button MapForm= new Button("MapForm");
     
-BUTVoyage.addActionListener((evt) -> new VoyageHome(res,current).show());
 BUTProfil.addActionListener((evt) -> new ProfileForm(res,current).show());
 BUTRestaurant.addActionListener((evt) -> new Restaurant(res,current).show());
 BUTExcursion.addActionListener((evt) -> new Excursion(res,current).show());
 BUTReclmataion.addActionListener((evt) -> new Reclamation(current).show());
 BUTCommentaire.addActionListener((evt) -> new Commentaire(current).show());
-BUTReservationVoyage.addActionListener((evt) -> new ShowReservationVoyage(current).show());
-MapForm.addActionListener((evt) -> new MapForm(theme,current));
+BUTReservationVoyage.addActionListener((evt) -> new ShowReservationVoyage(res,current).show());
 
 
 
-        addAll(BUTProfil,BUTVoyage,BUTExcursion,BUTRestaurant,BUTReclmataion,BUTCommentaire,BUTReservationVoyage,BUTReservationRestaurant,BUTReservationExcursion,MapForm);
+        addAll(BUTProfil,BUTExcursion,BUTRestaurant,BUTReclmataion,BUTCommentaire,BUTReservationVoyage,BUTReservationRestaurant,BUTReservationExcursion);
     
         
     }

@@ -12,7 +12,9 @@ import Utils.Statics;
 import com.codename1.components.MultiButton;
 import com.codename1.components.SpanLabel;
 import com.codename1.ui.Button;
+import com.codename1.ui.Command;
 import com.codename1.ui.Container;
+import com.codename1.ui.Dialog;
 import com.codename1.ui.EncodedImage;
 import com.codename1.ui.FontImage;
 import com.codename1.ui.Form;
@@ -62,7 +64,20 @@ public class ShowVoyage extends Form {
                      list.add(sp);
                      sp.addActionListener((evt) -> {
                          System.out.println("reserver");
-                                        new AddResrvationVoyage(current,voyage).show();
+                         if (Dialog.show("Confirmation", "Que voulez vous faire ?", "Supprimer", "Modifier")) {
+                                            
+                                                if( ServiceVoyage.getInstance().deletedVoyage(voyage.getId())){
+                                                    {
+                                                       Dialog.show("Success","L'agence "+voyage.getNom_Voyage()+" a été supprimé avec succées",new Command("OK"));
+                                                       previous.showBack();
+                                                    }
+                                        }
+                                    }
+                                        else{ 
+                                               
+                                                 new ModifierVoyage(current,voyage).show();
+                                        }
+                                      //  new AddResrvationVoyage(current,voyage).show();
                      });
         }
         
@@ -145,8 +160,9 @@ public class ShowVoyage extends Form {
         //sp.setText(ServiceVoyage.getInstance().affichageVoyage().toString());
         this.add(list);
             }
-        getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK, e -> previous.showBack());
-
+            getToolbar().addMaterialCommandToLeftBar("",FontImage.MATERIAL_ARROW_BACK, (evt) -> {
+            previous.showBack();
+            });
     }
     
     

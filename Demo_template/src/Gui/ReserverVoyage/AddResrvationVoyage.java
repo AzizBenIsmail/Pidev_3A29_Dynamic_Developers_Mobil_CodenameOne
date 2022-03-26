@@ -34,10 +34,10 @@ public class AddResrvationVoyage extends Form  {
         setLayout(BoxLayout.y());
         TextField Client = new TextField("", "Client");
                  Client.getStyle().setFgColor(154245);
-        TextField Travel_Class = new TextField("", "Travel_Class");
+        TextField Travel_Class = new TextField("", "Travel_Classr(\"Economy class\", \"First class\", \"Business class\")");
                 Travel_Class.getStyle().setFgColor(154245);
         TextField Age = new TextField("", "Age");
-                Travel_Class.getStyle().setFgColor(154245);
+                Age.getStyle().setFgColor(154245);
         Button btnValider = new Button("Valider");
         btnValider.addActionListener(new ActionListener() {
             @Override
@@ -52,7 +52,7 @@ public class AddResrvationVoyage extends Form  {
                         {
                            Dialog.show("Success","Connection accepted",new Command("OK"));
                         }else
-                            Dialog.show("ERROR", "Server error", new Command("OK"));
+                            Dialog.show("ERROR", "Votre Cin n'existe pas", new Command("OK"));
                     } catch (NumberFormatException e) {
                         Dialog.show("ERROR", "Status must be a number", new Command("OK"));
                     }

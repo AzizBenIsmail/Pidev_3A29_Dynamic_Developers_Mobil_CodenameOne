@@ -6,6 +6,7 @@
 package Gui.Voyage;
 
 
+import Gui.premium.statForm;
 import com.codename1.ui.Button;
 import com.codename1.ui.FontImage;
 import com.codename1.ui.Form;
@@ -22,8 +23,10 @@ import com.mycompany.myapp.ProfileForm;
  */
 public class VoyageHome extends Form{
     Form current;
+
     public VoyageHome(Resources res, Form previous) {
                 current=this; //Back 
+                
         add(new Label("Welcom to Travel_Me"));
         setTitle(" --Voyage-- ");
         setLayout(BoxLayout.y());
@@ -32,12 +35,13 @@ public class VoyageHome extends Form{
     Button BUTMod = new Button("Modifier Voyage");
     Button BUTSup = new Button("Supprimer Voyage");
     Button BUTShow = new Button("Show Voyage");
-    Button BUTCam = new Button("Camera ");
-    BUTAdd.addActionListener((evt) -> new AddVoyage(current).show());
+        Button BUTStat = new Button("Show Stat");
+    BUTAdd.addActionListener((evt) -> new statForm(current).show());
+        BUTAdd.addActionListener((evt) -> new AddVoyage(current).show());
     BUTSup.addActionListener((evt) -> new SupprimerVoyage(current).show());
-    BUTMod.addActionListener((evt) -> new ModifierVoyage(current).show());
+   // BUTMod.addActionListener((evt) -> new ModifierVoyage(current).show());
     BUTShow.addActionListener((evt) -> new ShowVoyage(current,0).show());
-        addAll(BUTShow,BUTAdd,BUTMod,BUTSup);
+        addAll(BUTShow,BUTAdd,BUTMod,BUTSup,BUTStat);
     
     getToolbar().addMaterialCommandToLeftBar("",FontImage.MATERIAL_ARROW_BACK, (evt) -> {
         new ProfileForm(res,this).show();

@@ -18,6 +18,7 @@ import com.codename1.ui.Image;
 import com.codename1.ui.URLImage;
 import com.codename1.ui.layouts.BoxLayout;
 import com.codename1.ui.util.Resources;
+import com.mycompany.myapp.ProfileForm;
 import java.util.ArrayList;
 
 /**
@@ -26,8 +27,7 @@ import java.util.ArrayList;
  */
 public class ShowReservationVoyage extends Form {
     Form current;
-            private Resources theme;
-    public ShowReservationVoyage(Form previous) {
+    public ShowReservationVoyage(Resources res,Form previous) {
         current=this;
            setTitle("Liste des Reservation des Voyages");
         setLayout(BoxLayout.y());
@@ -47,14 +47,16 @@ public class ShowReservationVoyage extends Form {
                      
                      sp.addActionListener((evt) -> {
                          
-                       new MapFormVoyage(theme,current,ReserverVoyage);
+                       new MapFormVoyage(res,current,ReserverVoyage);
                      });
         }
         
          //SpanLabel sp = new SpanLabel();
         //sp.setText(ServiceVoyage.getInstance().affichageVoyage().toString());
         this.add(list); 
-        getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK, e -> previous.showBack());
+        getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK, e -> {
+        new ProfileForm(res,this).show();
+        });
 
         
     }
