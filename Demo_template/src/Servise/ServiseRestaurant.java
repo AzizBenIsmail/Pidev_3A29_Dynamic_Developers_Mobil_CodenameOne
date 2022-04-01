@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package Servise;
-
 import Entity.Restaurant;
 import Entity.Voyage;
 import Utils.Statics;
@@ -14,6 +13,7 @@ import com.codename1.io.JSONParser;
 import com.codename1.io.NetworkEvent;
 import com.codename1.io.NetworkManager;
 import com.codename1.ui.events.ActionListener;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -94,5 +94,76 @@ public class ServiseRestaurant {
          NetworkManager.getInstance().addToQueueAndWait(req);
                              
            return result;
+    }
+    public boolean AddRestaurant(Restaurant restaurant)
+    {
+        String url = Statics.BASE_URL+"/restaurant/AddrestaurantsJSON?Nom_Restaurant="+restaurant.getNom_Restaurant()+"&Adresse_Restaurant="+restaurant.getAdresse_Restaurant()+"&Num_Tel_Restaurant="+restaurant.getNum_Tel_Restaurant()+"&Description_Restaurant="+restaurant.getDescription_Restaurant()+"&Image="+restaurant.getImage();
+             //  String url = Statics.BASE_URL + "create";
+        req.setUrl(url);
+    req.addResponseListener((e) -> {
+                        resultOK = req.getResponseCode() == 200; //Code HTTP 200 OK
+        String str = new String(req.getResponseData());
+        System.out.println("data"+str);
+    });
+        NetworkManager.getInstance().addToQueueAndWait(req);
+return resultOK;
+    }
+    
+     public boolean Updaterestaurants(Restaurant restaurant)
+    {
+        String url = Statics.BASE_URL+"/restaurant/UpdaterestaurantsJSON/"+restaurant.getId()+"?Nom_Restaurant="+restaurant.getNom_Restaurant()+"&Adresse_Restaurant="+restaurant.getAdresse_Restaurant()+"&Num_Tel_Restaurant="+restaurant.getNum_Tel_Restaurant()+"&Description_Restaurant="+restaurant.getDescription_Restaurant()+"&Image="+restaurant.getImage();
+        req.setUrl(url);
+    req.addResponseListener((e) -> {
+                        resultOK = req.getResponseCode() == 200; //Code HTTP 200 OK
+        String str = new String(req.getResponseData());
+        //System.out.println("data"+str);
+    });
+        NetworkManager.getInstance().addToQueueAndWait(req);
+return resultOK;
+    }
+    
+    public ArrayList<Restaurant> parseTasks(String jsonText){
+        try {
+            Restaurant =new ArrayList<>();  
+            JSONParser j = new JSONParser();
+            Map<String,Object> tasksListJson = 
+               j.parseJSON(new CharArrayReader(jsonText.toCharArray()));
+            
+            List<Map<String,Object>> list = (List<Map<String,Object>>)tasksListJson.get("root");
+            for(Map<String,Object> obj : list){
+                Restaurant r = new Restaurant();
+                float id = Float.parseFloat(obj.get("id").toString());
+              /*  v.setId((int)id);
+                v.setDestination(obj.get("Dest").toString());
+                v.setNom_Voyage(obj.get("NomVoy").toString());
+                v.setDuree_Voyage(obj.get("Duree").toString());
+                v.setPrix_Voyage((int) obj.get("Prix"));
+                v.setValabilite(obj.get("Valabilite").toString());
+                v.setImage(obj.get("image").toString());*/
+               Restaurant.add(r);
+            }
+            
+            
+        } catch (IOException ex) {
+            
+        }
+        return Restaurant;
+    }
+
+    
+    public boolean deletedRestaurant(int id) {
+
+        String url = Statics.BASE_URL + "/restaurant/DeleterestaurantsJSON/" + id + "";
+        req.setUrl(url);
+        req.setPost(true);
+        req.addResponseListener(new ActionListener<NetworkEvent>() {
+            @Override
+            public void actionPerformed(NetworkEvent evt) {
+                resultOK = req.getResponseCode() == 200;
+                req.removeResponseListener(this);
+            }
+        });
+            NetworkManager.getInstance().addToQueueAndWait(req);
+        return resultOK;
     }
 }

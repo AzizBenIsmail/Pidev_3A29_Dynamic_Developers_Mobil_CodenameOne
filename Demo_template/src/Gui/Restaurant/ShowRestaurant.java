@@ -10,6 +10,7 @@ import Servise.ServiseRestaurant;
 import Utils.Statics;
 import com.codename1.components.MultiButton;
 import com.codename1.ui.Container;
+import com.codename1.ui.Dialog;
 import com.codename1.ui.EncodedImage;
 import com.codename1.ui.FontImage;
 import com.codename1.ui.Form;
@@ -41,9 +42,7 @@ public class ShowRestaurant extends Form {
                      list.add(sp);
                      
                      sp.addActionListener((evt) -> {
-                         //affichage en details details(voyage).show(); 
-                         //autre page 
-                         //ajouter panier 
+                          
                      });
         }
         

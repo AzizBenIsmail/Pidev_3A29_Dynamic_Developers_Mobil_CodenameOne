@@ -25,6 +25,14 @@ public class Restaurant {
         return "Restaurant{" + "id=" + id + ", Num_Tel_Restaurant=" + Num_Tel_Restaurant + ", Nom_Restaurant=" + Nom_Restaurant + ", Adresse_Restaurant=" + Adresse_Restaurant + ", Image=" + Image + ", Description_Restaurant=" + Description_Restaurant + '}';
     }
 
+    public Restaurant(int Num_Tel_Restaurant, String Nom_Restaurant, String Adresse_Restaurant, String Image, String Description_Restaurant) {
+        this.Num_Tel_Restaurant = Num_Tel_Restaurant;
+        this.Nom_Restaurant = Nom_Restaurant;
+        this.Adresse_Restaurant = Adresse_Restaurant;
+        this.Image = Image;
+        this.Description_Restaurant = Description_Restaurant;
+    }
+
     public Restaurant(int id, int Num_Tel_Restaurant, String Nom_Restaurant, String Adresse_Restaurant, String Image, String Description_Restaurant) {
         this.id = id;
         this.Num_Tel_Restaurant = Num_Tel_Restaurant;

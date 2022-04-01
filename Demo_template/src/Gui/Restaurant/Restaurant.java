@@ -35,5 +35,13 @@ Form current;
     
     getToolbar().addMaterialCommandToLeftBar("",FontImage.MATERIAL_ARROW_BACK, (evt) -> {
   new ProfileForm(res,this).show();        });}
+
+    Restaurant(int parseInt, String text, String text0) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    Restaurant(int parseInt, String text, String text0, String toString, String text1) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     }
    
