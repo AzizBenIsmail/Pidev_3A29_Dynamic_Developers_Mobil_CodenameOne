@@ -19,7 +19,9 @@
 
 package com.mycompany.myapp;
 
+import Gui.Excursion.AddResrvationExcursion;
 import Gui.ReserverVoyage.AddResrvationVoyage;
+import Gui.Restaurant.AddResrvationRestaurant;
 import Servise.ServiceVoyage;
 import Servise.ServiseExcusion;
 import Servise.ServiseRestaurant;
@@ -133,9 +135,7 @@ public class ProfileForm extends SideMenuBaseForm {
                      listrestaurant.add(sp);
                      
                      sp.addActionListener((evt) -> {
-                         //affichage en details details(voyage).show(); 
-                         //autre page 
-                         //ajouter panier 
+                         new AddResrvationRestaurant(current,restaurant).show();
                      });
         }
         
@@ -163,9 +163,8 @@ public class ProfileForm extends SideMenuBaseForm {
                      listExcursion.add(sp);
                      
                      sp.addActionListener((evt) -> {
-                         //affichage en details details(voyage).show(); 
-                         //autre page 
-                         //ajouter panier 
+                         new AddResrvationExcursion(current,Excursion).show();
+
                      });
         }
         

@@ -106,7 +106,9 @@ public class statForm extends Form {
     // Create a form and show it.
     Form f = new Form("Budget", new BorderLayout());
     add( c);
-    
+        getToolbar().addMaterialCommandToLeftBar("",FontImage.MATERIAL_ARROW_BACK, (evt) -> {
+        previous.showBack();
+        });   
      }
      
            /**

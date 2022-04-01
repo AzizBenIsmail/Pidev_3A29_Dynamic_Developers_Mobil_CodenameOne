@@ -31,7 +31,7 @@ Form current;
         setLayout(BoxLayout.y());
         
     Button BUTAdd = new Button("Add Voyage");
-    Button BUTMod = new Button("Modifier Voyage");
+ //   Button BUTMod = new Button("Modifier Voyage");
     Button BUTSup = new Button("Supprimer Voyage");
     Button BUTShow = new Button("Show Voyage");
     Button BUTStat = new Button("Show Stat");
@@ -40,7 +40,7 @@ Form current;
     BUTSup.addActionListener((evt) -> new SupprimerVoyage(current).show());
   //  BUTMod.addActionListener((evt) -> new ModifierVoyage(current).show());
     BUTShow.addActionListener((evt) -> new ShowVoyage(current,0,"").show());
-        addAll(BUTShow,BUTAdd,BUTMod,BUTSup,BUTStat);        
+        addAll(BUTShow,BUTAdd,BUTSup,BUTStat);        
     getToolbar().addMaterialCommandToLeftBar("",FontImage.MATERIAL_ARROW_BACK, (evt) -> {
         previous.showBack();
         });     
