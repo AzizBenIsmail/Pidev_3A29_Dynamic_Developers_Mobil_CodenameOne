@@ -7,29 +7,37 @@ package Entity;
 
 /**
  *
- * @author ASUS
+ * @author Oumayma
  */
 public class Excursion {
-            private int id,prix;
-    private String Nom_Excursion,Description_Excursion,Type_Excursion,Lieu,Image,valabilite;
+     private int id;
+     private float prix ;
+     private String Nom,Description,Type,Lieu,Image,valabilite,date;
 
-    public Excursion(int id, int prix, String Nom_Excursion, String Description_Excursion, String Type_Excursion, String Lieu, String Image, String valabilite) {
-        this.id = id;
+    public Excursion() {
+    }
+
+    public Excursion(float prix, String Nom, String Description, String Type, String Lieu, String Image, String valabilite, String date) {
         this.prix = prix;
-        this.Nom_Excursion = Nom_Excursion;
-        this.Description_Excursion = Description_Excursion;
-        this.Type_Excursion = Type_Excursion;
+        this.Nom = Nom;
+        this.Description = Description;
+        this.Type = Type;
         this.Lieu = Lieu;
         this.Image = Image;
         this.valabilite = valabilite;
+        this.date = date;
     }
-
-    @Override
-    public String toString() {
-        return "Excursion{" + "id=" + id + ", prix=" + prix + ", Nom_Excursion=" + Nom_Excursion + ", Description_Excursion=" + Description_Excursion + ", Type_Excursion=" + Type_Excursion + ", Lieu=" + Lieu + ", Image=" + Image + ", valabilite=" + valabilite + '}';
-    }
-
-    public Excursion() {
+    
+    public Excursion(int id, float prix, String Nom, String Description, String Type, String Lieu, String Image, String valabilite, String date) {
+        this.id = id;
+        this.prix = prix;
+        this.Nom = Nom;
+        this.Description = Description;
+        this.Type = Type;
+        this.Lieu = Lieu;
+        this.Image = Image;
+        this.valabilite = valabilite;
+        this.date = date;
     }
 
     public int getId() {
@@ -40,36 +48,36 @@ public class Excursion {
         this.id = id;
     }
 
-    public int getPrix() {
+    public float getPrix() {
         return prix;
     }
 
-    public void setPrix(int prix) {
+    public void setPrix(float prix) {
         this.prix = prix;
     }
 
-    public String getNom_Excursion() {
-        return Nom_Excursion;
+    public String getNom() {
+        return Nom;
     }
 
-    public void setNom_Excursion(String Nom_Excursion) {
-        this.Nom_Excursion = Nom_Excursion;
+    public void setNom(String Nom) {
+        this.Nom = Nom;
     }
 
-    public String getDescription_Excursion() {
-        return Description_Excursion;
+    public String getDescription() {
+        return Description;
     }
 
-    public void setDescription_Excursion(String Description_Excursion) {
-        this.Description_Excursion = Description_Excursion;
+    public void setDescription(String Description) {
+        this.Description = Description;
     }
 
-    public String getType_Excursion() {
-        return Type_Excursion;
+    public String getType() {
+        return Type;
     }
 
-    public void setType_Excursion(String Type_Excursion) {
-        this.Type_Excursion = Type_Excursion;
+    public void setType(String Type) {
+        this.Type = Type;
     }
 
     public String getLieu() {
@@ -96,4 +104,13 @@ public class Excursion {
         this.valabilite = valabilite;
     }
 
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+     
+     
 }

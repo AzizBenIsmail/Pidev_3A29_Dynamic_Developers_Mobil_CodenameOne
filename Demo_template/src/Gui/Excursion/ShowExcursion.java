@@ -27,10 +27,10 @@ public class ShowExcursion  extends Form {
     public ShowExcursion(Form previous) {
          setTitle("Liste des Excursion");
         setLayout(BoxLayout.y());
-        ArrayList<Entity.Excursion> Excursions = ServiseExcusion.getInstance().affichageExcursion();
+        ArrayList<Entity.Excursion1> Excursions = ServiseExcusion.getInstance().affichageExcursion();
         Container list = new Container(BoxLayout.y());
          list.setScrollableY(true);
-        for (Entity.Excursion Excursion : Excursions) {
+        for (Entity.Excursion1 Excursion : Excursions) {
             
               EncodedImage placeholder = EncodedImage.createFromImage(Image.createImage(50, 50, 0xffff0000), true);
               Image i = URLImage.createToStorage(placeholder,Excursion.getImage(),Statics.BASE_URL+"/uploads/"+Excursion.getImage());

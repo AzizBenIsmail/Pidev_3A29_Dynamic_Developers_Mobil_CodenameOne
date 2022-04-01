@@ -149,10 +149,10 @@ public class ProfileForm extends SideMenuBaseForm {
         
         setupSideMenu(res);
     
-        ArrayList<Entity.Excursion> Excursions = ServiseExcusion.getInstance().affichageExcursion();
+        ArrayList<Entity.Excursion1> Excursions = ServiseExcusion.getInstance().affichageExcursion();
         Container listExcursion = new Container(BoxLayout.y());
          listExcursion.setScrollableY(true);
-        for (Entity.Excursion Excursion : Excursions) {
+        for (Entity.Excursion1 Excursion : Excursions) {
             
               EncodedImage placeholder = EncodedImage.createFromImage(Image.createImage(50, 50, 0xffff0000), true);
               Image i = URLImage.createToStorage(placeholder,Excursion.getImage(),Statics.BASE_URL+"/uploads/"+Excursion.getImage());

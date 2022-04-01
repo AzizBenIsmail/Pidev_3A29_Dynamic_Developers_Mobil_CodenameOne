@@ -5,7 +5,7 @@
  */
 package Servise;
 
-import Entity.Excursion;
+import Entity.Excursion1;
 import Entity.ReserverVoyage;
 import Entity.Voyage;
 import Utils.Statics;

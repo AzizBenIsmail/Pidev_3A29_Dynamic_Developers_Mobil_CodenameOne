@@ -29,8 +29,8 @@ import com.codename1.ui.plaf.Style;
  */
 public class AddResrvationExcursion extends Form  {
 
-    Entity.Excursion e;
-    public AddResrvationExcursion(Form previous,Entity.Excursion e) {
+    Entity.Excursion1 e;
+    public AddResrvationExcursion(Form previous,Entity.Excursion1 e) {
         this.e=e;
      setTitle("Add ResrvationVoyage");
         setLayout(BoxLayout.y());

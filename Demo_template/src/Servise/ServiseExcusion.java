@@ -5,7 +5,7 @@
  */
 package Servise;
 
-import Entity.Excursion;
+import Entity.Excursion1;
 import Entity.Restaurant;
 import Utils.Statics;
 import com.codename1.io.CharArrayReader;
@@ -25,7 +25,7 @@ import java.util.Map;
 public class ServiseExcusion {
           private static ServiseExcusion instance = null;
     public ConnectionRequest req;
-    public ArrayList<Excursion> Excursion;
+    public ArrayList<Excursion1> Excursion1;
 
     public boolean resultOK;
     
@@ -40,9 +40,9 @@ public class ServiseExcusion {
     }
       
     
-    public ArrayList<Excursion> affichageExcursion() 
+    public ArrayList<Excursion1> affichageExcursion() 
      {
-        ArrayList<Excursion> result = new ArrayList<>();
+        ArrayList<Excursion1> result = new ArrayList<>();
         String  url = Statics.BASE_URL +"/excursion/AllExcursionJSON";
          req.setUrl(url);
         req.addResponseListener(new ActionListener<NetworkEvent>() {
@@ -57,7 +57,7 @@ public class ServiseExcusion {
                     List<Map<String, Object>> listOfMaps = (List<Map<String, Object>>) mapExcursion.get("root");
                       
                     for (Map<String, Object> obj : listOfMaps) {
-                        Excursion s = new Excursion();
+                     Excursion1 s=new Excursion1();
                         int id = (int) Float.parseFloat(obj.get("id").toString());
                         int Prix = (int) Float.parseFloat(obj.get("prix").toString());
                         String Nom_Excursion = obj.get("Nom_Excursion").toString();
