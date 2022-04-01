@@ -48,7 +48,7 @@ public class AddVoyage extends Form {
                 else
                 {
                     try {
-                        Voyage Voyage = new Voyage(Integer.parseInt(Prix.getText()),Destination.getText(),Nom_Voyage.getText(),Duree_Voyage.getText(),Valabilite.getText(),image.getText());
+                        Voyage Voyage = new Voyage(Integer.parseInt(Prix.getText()),Destination.getText(),Nom_Voyage.getText(),Duree_Voyage.getText(),"Non",image.getText());
                         if( ServiceVoyage.getInstance().AddVoyage(Voyage))
                         {
                            Dialog.show("Success","Connection accepted",new Command("OK"));
@@ -63,7 +63,7 @@ public class AddVoyage extends Form {
         getToolbar().addMaterialCommandToLeftBar("",FontImage.MATERIAL_ARROW_BACK, (evt) -> {
         previous.showBack();
         });
-          addAll(Destination,Nom_Voyage,Duree_Voyage,Prix,Valabilite,image,btnValider);
+          addAll(Destination,Nom_Voyage,Duree_Voyage,Prix,image,btnValider);
     }  
 
 }

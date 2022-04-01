@@ -105,7 +105,7 @@ public class ProfileForm extends SideMenuBaseForm {
              MultiButton sp = new MultiButton(voyage.getNom_Voyage());
              sp.setIcon(i.fill(200, 200));
               sp.setTextLine1("Destination : "+voyage.getDestination()+" Prix : "+voyage.getPrix_Voyage());
-              sp.setTextLine2("Durèe : "+voyage.getDuree_Voyage());
+              sp.setTextLine2("Durèe : "+voyage.getDuree_Voyage()+" Valabilite : "+voyage.getValabilite());
                      listVoyage.add(sp);
                      
                      sp.addActionListener((evt) -> {
