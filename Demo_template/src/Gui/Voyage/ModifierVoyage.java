@@ -34,7 +34,7 @@ public class ModifierVoyage extends Form {
                         Nom_Voyage.getStyle().setFgColor(154245);
         TextField Duree_Voyage = new TextField(v.getDuree_Voyage(), "Duree_Voyage");
                         Duree_Voyage.getStyle().setFgColor(154245);
-        TextField Prix = new TextField("","2453");
+        TextField Prix = new TextField("123","2453");
                         Prix.getStyle().setFgColor(154245);
         TextField image = new TextField(v.getImage(), "image");
                             image.getStyle().setFgColor(154245);
@@ -60,8 +60,10 @@ public class ModifierVoyage extends Form {
                            previous.showBack();
                         }else
                             Dialog.show("ERROR", "Server error", new Command("OK"));
+                            previous.showBack();
                     } catch (NumberFormatException e) {
                         Dialog.show("ERROR", "Status must be a number", new Command("OK"));
+                        previous.showBack();
                     }
                     
                 }            }

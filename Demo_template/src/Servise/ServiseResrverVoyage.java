@@ -72,8 +72,10 @@ public class ServiseResrverVoyage {
 
 
                         //System.out.println(v);
+                        int id = (int) Float.parseFloat(obj.get("id").toString());
                         int Age = (int) Float.parseFloat(obj.get("Age").toString());
-                        String Travel_Class = obj.get("Travel_Class").toString();                        
+                        String Travel_Class = obj.get("Travel_Class").toString();
+                        s.setId((int) id);                        
                         s.setAge((int) Age);
                         s.setTravel_Class(Travel_Class);
                         s.setVoyage(voy);
@@ -111,5 +113,21 @@ public class ServiseResrverVoyage {
     });
         NetworkManager.getInstance().addToQueueAndWait(req);
 return resultOK;
+    }
+     
+     public boolean deletedReservationVoyage(int id) {
+
+        String url = Statics.BASE_URL + "/reservation/voyage/deletedReservationVoyage/" + id + "";
+        req.setUrl(url);
+        req.setPost(true);
+        req.addResponseListener(new ActionListener<NetworkEvent>() {
+            @Override
+            public void actionPerformed(NetworkEvent evt) {
+                resultOK = req.getResponseCode() == 200;
+                req.removeResponseListener(this);
+            }
+        });
+            NetworkManager.getInstance().addToQueueAndWait(req);
+        return resultOK;
     }
 }

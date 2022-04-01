@@ -67,7 +67,7 @@ return resultOK;
     req.addResponseListener((e) -> {
                         resultOK = req.getResponseCode() == 200; //Code HTTP 200 OK
         String str = new String(req.getResponseData());
-        System.out.println("data"+str);
+        //System.out.println("data"+str);
     });
         NetworkManager.getInstance().addToQueueAndWait(req);
 return resultOK;
@@ -290,6 +290,63 @@ return resultOK;
      {
         ArrayList<Voyage> result = new ArrayList<>();
         String  url = Statics.BASE_URL +"/voyage/order_By_DestJSON";
+         req.setUrl(url);
+        req.addResponseListener(new ActionListener<NetworkEvent>() {
+            @Override
+            public void actionPerformed(NetworkEvent evt) {
+                JSONParser jsonp;                
+                jsonp = new JSONParser();
+                try {
+                    //renvoi une map avec clé = root et valeur le reste
+                    Map<String, Object> mapVoyage = jsonp.parseJSON(new CharArrayReader(new String(req.getResponseData()).toCharArray()));
+
+                    List<Map<String, Object>> listOfMaps = (List<Map<String, Object>>) mapVoyage.get("root");
+                      
+                    for (Map<String, Object> obj : listOfMaps) {
+                        Voyage v = new Voyage();
+                        int id = (int) Float.parseFloat(obj.get("id").toString());
+                        String Destination = obj.get("Destination").toString();
+                        String Nom_Voyage = obj.get("Nom_Voyage").toString();
+                        String Duree_Voyage = obj.get("Duree_Voyage").toString();
+                        int Prix_Voyage=(int)Float.parseFloat(obj.get("Prix").toString());                          
+                          String valabilite = obj.get("valabilite").toString();
+                          String Image = obj.get("Image").toString();
+
+                        
+                        v.setId((int) id);
+                        v.setDestination(Destination);
+                        v.setNom_Voyage(Nom_Voyage);
+                        v.setPrix_Voyage((int) Prix_Voyage);
+                        v.setDuree_Voyage(Duree_Voyage);
+                        v.setImage(Image);
+                        v.setValabilite(valabilite);
+
+//                        String DateConverter=obj.get("date").toString().substring(obj.get("Date").toString().indexOf("timestamp")+10 , obj.get("Date").toString().lastIndexOf("}"));      
+   //             Date currentTime = new Date(Double.valueOf(DateConverter).longValue() * 1000);
+   //             SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+    //            String dateString = formatter.format(currentTime);
+    //            v.setDate(dateString);
+                result.add(v);
+                  
+                    }
+                } 
+
+       catch(Exception e ){
+                       e.printStackTrace();
+                   }
+            }           
+                });
+        
+         NetworkManager.getInstance().addToQueueAndWait(req);
+                             
+           return result;
+    }
+    
+     public ArrayList<Voyage> Voyagesearch(String c) 
+     {
+        ArrayList<Voyage> result = new ArrayList<>();
+        String  url = Statics.BASE_URL +"/voyage/searchUserJSON?search="+c+"";
+         System.out.println(c);
          req.setUrl(url);
         req.addResponseListener(new ActionListener<NetworkEvent>() {
             @Override

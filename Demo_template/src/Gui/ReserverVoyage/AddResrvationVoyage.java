@@ -46,16 +46,13 @@ public class AddResrvationVoyage extends Form  {
                     Dialog.show("Alert", "Please fill all the fields", new Command("OK"));
                 else
                 {
-                    try {
+
                         ReserverVoyage reserverVoyage = new ReserverVoyage(Travel_Class.getText(),Integer.parseInt(Age.getText()),v,Integer.parseInt(Client.getText()));
                         if( ServiseResrverVoyage.getInstance().AddReservationVoyage(reserverVoyage))
                         {
                            Dialog.show("Success","Connection accepted",new Command("OK"));
                         }else
                             Dialog.show("ERROR", "Votre Cin n'existe pas", new Command("OK"));
-                    } catch (NumberFormatException e) {
-                        Dialog.show("ERROR", "Status must be a number", new Command("OK"));
-                    }
                     
                 }            }
         });

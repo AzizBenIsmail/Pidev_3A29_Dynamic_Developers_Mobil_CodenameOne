@@ -30,7 +30,7 @@ GestionVoyage.addActionListener((evt) -> new GestionVoyage(current).show());
 GestionReservationVoyage.addActionListener((evt) -> new GestionReservationVoyage(current).show());
  addAll(GestionVoyage,GestionReservationVoyage);
 
-        getToolbar().addMaterialCommandToLeftBar("Logout", FontImage.MATERIAL_EXIT_TO_APP, e -> previous.showBack());
+        getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_EXIT_TO_APP, e -> previous.showBack());
     }
     
 }
