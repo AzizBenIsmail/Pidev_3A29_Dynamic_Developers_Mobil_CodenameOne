@@ -27,6 +27,7 @@ import Gui.ReserverVoyage.ShowReservationVoyage;
 import Gui.Restaurant.Restaurant;
 import Gui.Voyage.VoyageHome;
 import Gui.premium.LoginPremium;
+import Reclamation.ListReclamationForm;
 import com.codename1.components.ToastBar;
 import com.codename1.ui.Container;
 import com.codename1.ui.FontImage;
@@ -77,6 +78,7 @@ public abstract class SideMenuBaseForm extends Form {
         getToolbar().addMaterialCommandToSideMenu("  Reservation Voyage", FontImage.MATERIAL_FLIGHT_TAKEOFF,  e -> new ShowReservationVoyage(res,current).show());
         getToolbar().addMaterialCommandToSideMenu("  Restaurant", FontImage.MATERIAL_DINING,  e -> new Restaurant(res,current).show());
         getToolbar().addMaterialCommandToSideMenu("  Excursion", FontImage.MATERIAL_GRASS,  e -> new ListExcursionForm(res,current).show());
+        getToolbar().addMaterialCommandToSideMenu("  Reclamation", FontImage.MATERIAL_REPORT_PROBLEM,  e -> new ListReclamationForm(res,current).show());
         getToolbar().addMaterialCommandToSideMenu("  Map", FontImage.MATERIAL_MAP,  e -> new MapForm(res,current));
         getToolbar().addMaterialCommandToSideMenu("  Menu", FontImage.MATERIAL_MENU,  e -> new HomeVoyage(res).show());
         getToolbar().addMaterialCommandToSideMenu("  Account Settings", FontImage.MATERIAL_SETTINGS,  e -> showOtherForm(res));
