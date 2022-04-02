@@ -28,20 +28,12 @@ Form current;
     Button BUTAdd = new Button("Add Restaurant");
     Button BUTShow = new Button("Show Restaurant");
     //Button BUTCam = new Button("Camera ");
-    BUTShow.addActionListener((evt) -> new ShowRestaurant(current).show());
-    //BUTCam.addActionListener((evt) -> new Camera().show());
-  //  BUTShow.addActionListener((evt) -> new ShowVoyage(current).show());
+    BUTShow.addActionListener((evt) -> new ShowRestaurantCrud(current).show());
+    BUTAdd.addActionListener((evt) -> new Ajouterrestaurant(current).show());
         addAll(BUTAdd,BUTShow);
     
     getToolbar().addMaterialCommandToLeftBar("",FontImage.MATERIAL_ARROW_BACK, (evt) -> {
   new ProfileForm(res,this).show();        });}
 
-    Restaurant(int parseInt, String text, String text0) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    Restaurant(int parseInt, String text, String text0, String toString, String text1) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
     }
    

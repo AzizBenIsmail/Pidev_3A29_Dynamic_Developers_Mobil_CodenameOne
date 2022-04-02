@@ -57,11 +57,12 @@ import java.net.URISyntaxException;
 public class AjoutPostForm extends Form { 
     
                     private Resources theme;
+    Form current;
 
-    public AjoutPostForm() {
-        
+    public AjoutPostForm(Form previous) {
+        current=this;
         setTitle("Creer Publication");
-        getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK, e -> new ListPostForm(theme,0).show());
+        getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK, e -> previous.showBack());
         setLayout(new BoxLayout(BoxLayout.Y_AXIS));
         
         ComboBox typeCombo = new ComboBox();

@@ -11,6 +11,8 @@ import Gui.ReserverVoyage.ShowReservationVoyage;
 import Gui.Restaurant.Restaurant;
 import Gui.Restaurant.ShowRestaurantCrud;
 import Gui.Voyage.VoyageHome;
+import Post.ListPostForm;
+import Reclamation.ListReclamationForm;
 import com.codename1.ui.Button;
 import com.codename1.ui.Container;
 import com.codename1.ui.Form;
@@ -38,23 +40,23 @@ private Resources theme;
     Button BUTReclmataion = new Button("Gestion Reclamation");
     Button BUTExcursion = new Button("Gestion Excursion");
     Button BUTRestaurant= new Button("Gestion Restaurant");
-    Button BUTCommentaire= new Button("Gestion Commentaire");
+    Button BUTVoyage= new Button("Gestion Voyage");
     Button BUTReservationVoyage= new Button("Gestion ReservationVoyage");
     Button BUTReservationExcursion= new Button("Gestion ReservationExcursion");
     Button BUTReservationRestaurant= new Button("Gestion ReservationRestaurant");
     Button Post= new Button("Gestion des Post");
 
-    
+Post.addActionListener((evt) -> new ListPostForm(res,0).show());
+BUTVoyage.addActionListener((evt) -> new VoyageHome(res,current).show());
 BUTProfil.addActionListener((evt) -> new ProfileForm(res,current).show());
 BUTRestaurant.addActionListener((evt) -> new ShowRestaurantCrud(current).show());
 BUTExcursion.addActionListener((evt) -> new Excursion(res,current).show());
-BUTReclmataion.addActionListener((evt) -> new Reclamation(current).show());
-BUTCommentaire.addActionListener((evt) -> new Commentaire(current).show());
+BUTReclmataion.addActionListener((evt) -> new ListReclamationForm(res,current).show());
 BUTReservationVoyage.addActionListener((evt) -> new ShowReservationVoyage(res,current).show());
 
 
 
-        addAll(Post,BUTProfil,BUTExcursion,BUTRestaurant,BUTReclmataion,BUTCommentaire,BUTReservationVoyage,BUTReservationRestaurant,BUTReservationExcursion);
+        addAll(BUTProfil,BUTExcursion,BUTRestaurant,BUTReclmataion,BUTVoyage,BUTReservationVoyage,BUTReservationRestaurant,BUTReservationExcursion,Post);
     
         
     }

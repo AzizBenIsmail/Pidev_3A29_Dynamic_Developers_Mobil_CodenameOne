@@ -58,7 +58,7 @@ public class ListPostForm extends Form {
         buttons.setLayout(new GridLayout(1, 2));
         Button addPost = new Button("Add Post");
         addPost.addActionListener((e)->{
-           new AjoutPostForm().show();
+           new AjoutPostForm(f).show();
         });
         
          buttons.addComponent(addPost);

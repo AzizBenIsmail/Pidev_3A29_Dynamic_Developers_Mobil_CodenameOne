@@ -46,7 +46,7 @@ public class GestionShowReservationVoyage extends Form {
              MultiButton sp = new MultiButton(ReserverVoyage.getTravel_Class());
                           sp.setIcon(i.fill(200, 200));
               sp.setTextLine1("Vous aver reserver le Voyage : "+ReserverVoyage.getVoyage().getNom_Voyage());
-              sp.setTextLine2("Travel_Class : "+ReserverVoyage.getId());
+              sp.setTextLine2("Travel_Class : "+ReserverVoyage.getTravel_Class());
               sp.setTextLine3("Age : "+ReserverVoyage.getAge());    
                      list.add(sp);
                      
