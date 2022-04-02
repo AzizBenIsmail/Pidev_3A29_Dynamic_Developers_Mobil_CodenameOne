@@ -48,7 +48,7 @@ public class ShowRestaurantCrud extends Form {
                                             
                                                 if(ServiseRestaurant.getInstance().deletedRestaurant(restaurant.getId())){
                                                     {
-                                                       Dialog.show("Success","La reservation du Voyage "+restaurant.getNom_Restaurant()+" a été supprimé avec succées",new Command("OK"));
+                                                       Dialog.show("Success","Le Restaurant "+restaurant.getNom_Restaurant()+" a été supprimé avec succées",new Command("OK"));
                                                        previous.showBack();
                                                     }
                                         }

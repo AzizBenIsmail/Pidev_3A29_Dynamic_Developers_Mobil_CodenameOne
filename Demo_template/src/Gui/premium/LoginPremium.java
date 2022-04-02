@@ -43,7 +43,7 @@ Form current;
                  new MenuPremium(current).show();
                     Dialog.show("Welcom", "Welcom to Premium", new Command("OK"));
         } else {
-                    Dialog.show("Alert", "Login or passord failed", new Command("OK"));
+                    Dialog.show("Alert", "interdit il faut devenir premium", new Command("OK"));
 
         }            
             }

@@ -65,13 +65,17 @@ public class LoginForm extends Form {
         passwordIcon.getAllStyles().setMargin(RIGHT, 0);
         FontImage.setMaterialIcon(loginIcon, FontImage.MATERIAL_PERSON_OUTLINE, 3);
         FontImage.setMaterialIcon(passwordIcon, FontImage.MATERIAL_LOCK_OUTLINE, 3);
-        
+                String Admin="travel.me.pridev@gmail.com";
         Button loginButton = new Button("LOGIN");
         loginButton.setUIID("LoginButton");
         loginButton.addActionListener(e -> {
-            Toolbar.setGlobalToolbar(false);
+            if(login.getText().equals(Admin)){
+                 new HomeVoyage(theme).show();
+            }
+            else{Toolbar.setGlobalToolbar(false);
             new WalkthruForm(theme).show();
             Toolbar.setGlobalToolbar(true);
+            }
         });
         
         Button createNewAccount = new Button("CREATE NEW ACCOUNT");
