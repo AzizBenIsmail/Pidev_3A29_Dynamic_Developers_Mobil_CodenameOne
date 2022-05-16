@@ -45,11 +45,9 @@ import java.util.List;
 public class ListPostForm extends Form {
      
      Form f;
-     public ListPostForm(Resources res,int a) {
+     Resources theme;
+     public ListPostForm(Resources theme,int a) {
          f=this;
-        getToolbar().addMaterialCommandToLeftBar("",FontImage.MATERIAL_ARROW_BACK, (evt) -> {
-            new ProfileForm(res,f).show();
-            });
         setTitle("NewsFeed");
         setLayout(new BoxLayout(BoxLayout.Y_AXIS));
         setLayout(new BorderLayout());
@@ -115,7 +113,7 @@ public class ListPostForm extends Form {
              itemWrapper.addComponent(b);
             
             b.addActionListener((e)->{
-              new ListPostForm(res,item.getId()).show();
+              new ListPostForm( theme,item.getId()).show();
             });
         
    
@@ -135,7 +133,7 @@ public class ListPostForm extends Form {
                    FontImage commentImage = FontImage.createMaterial(FontImage.MATERIAL_CHAT_BUBBLE_OUTLINE, commentStyle);
                    comment.setIcon(commentImage); 
                      comment.addActionListener((l)-> {
-                         new CommentForm(res,item).show();
+                         new CommentForm(theme,item).show();
                      });
                      
                      String C = String.valueOf(ServiceComment.getInstance().affichageCommentspost(item.getId()).size());
@@ -169,10 +167,15 @@ public class ListPostForm extends Form {
             list.addComponent(itemWrapper);
         }
         progress.dispose();
-        
+                         Button BUTexit = new Button("Back");
+    BUTexit.addActionListener((evt) ->new ProfileForm(theme,this).show());
         f.addComponent(BorderLayout.NORTH, buttons);
         f.addComponent(BorderLayout.CENTER, list);
+        f.addComponent(BorderLayout.WEST, BUTexit);
         f.show();
+                getToolbar().addMaterialCommandToLeftBar("",FontImage.MATERIAL_ARROW_BACK, (evt) -> {
+        new ProfileForm(theme,this).show();
+        });
       
     }
         public void showError(String msg) {

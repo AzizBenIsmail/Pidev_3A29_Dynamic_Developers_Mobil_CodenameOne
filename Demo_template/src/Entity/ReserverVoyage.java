@@ -11,14 +11,6 @@ package Entity;
  */
 public class ReserverVoyage {
     int Client,id;
-
-    public int getClient() {
-        return Client;
-    }
-
-    public void setClient(int Client) {
-        this.Client = Client;
-    }
     Voyage voyage;  
     String Travel_Class;
     int Age;
@@ -42,6 +34,15 @@ public class ReserverVoyage {
         this.Age = Age;
     }
 
+     
+    public int getClient() {
+        return Client;
+    }
+
+    public void setClient(int Client) {
+        this.Client = Client;
+    }
+    
     public int getId() {
         return id;
     }
