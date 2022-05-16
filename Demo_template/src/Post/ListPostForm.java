@@ -117,7 +117,7 @@ public class ListPostForm extends Form {
             });
         
    
-               if(!(item.getImageP().equals("0"))){
+               if(!(item.getImageP().equals("null"))){
                  EncodedImage placeholder = EncodedImage.createFromImage(Image.createImage(fullWidthImage, (int)fullWidthImage * 9 / 16), true);
               Image i = URLImage.createToStorage(placeholder,item.getImageP(),Statics.BASE_URL+"/uploads/"+item.getImageP()).fill(500,400);
                 itemWrapper.addComponent(new Label(i));}
@@ -167,11 +167,9 @@ public class ListPostForm extends Form {
             list.addComponent(itemWrapper);
         }
         progress.dispose();
-                         Button BUTexit = new Button("Back");
-    BUTexit.addActionListener((evt) ->new ProfileForm(theme,this).show());
+                        
         f.addComponent(BorderLayout.NORTH, buttons);
         f.addComponent(BorderLayout.CENTER, list);
-        f.addComponent(BorderLayout.WEST, BUTexit);
         f.show();
                 getToolbar().addMaterialCommandToLeftBar("",FontImage.MATERIAL_ARROW_BACK, (evt) -> {
         new ProfileForm(theme,this).show();

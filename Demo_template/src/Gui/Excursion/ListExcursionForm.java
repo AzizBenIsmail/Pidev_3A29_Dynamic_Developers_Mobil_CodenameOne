@@ -98,7 +98,7 @@ public class ListExcursionForm extends Form {
      
          f.add(CENTER,list); 
          f.show();
-        f.getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK, e -> new ProfileForm(theme,current).show());
+        f.getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK, e -> new ProfileForm(theme,f).show());
 
     }
     

@@ -111,7 +111,7 @@ public class CommentForm extends Form {
             });
                
                 URLImage photo;
-                if(!(item.getImageP().equals("0")))
+                if(!(item.getImageP().equals("null")))
                   try{
                       photo = URLImage.createToStorage(EncodedImage.createFromImage(Image.createImage(fullWidthImage, (int)fullWidthImage * 9 / 16),true), FileSystemStorage.getInstance().getAppHomePath()+item.getImageP(),
                      FileSystemStorage.getInstance().getAppHomePath()+item.getImageP() , URLImage.RESIZE_SCALE_TO_FILL);
