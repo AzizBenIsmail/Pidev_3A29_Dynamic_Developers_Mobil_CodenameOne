@@ -4,9 +4,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/lenovo/Desktop/aymen/codename-project-full-code-source-main/src/com/mycompany/gui/ProfileForm.java</file>
-            <file>file:/C:/Users/lenovo/Desktop/aymen/codename-project-full-code-source-main/src/com/mycompany/gui/WalkthruForm.java</file>
-            <file>file:/C:/Users/lenovo/Desktop/aymen/codename-project-full-code-source-main/src/com/mycompany/services/ServiceUtilisateur.java</file>
+            <file>file:/C:/Users/ASUS/OneDrive/Bureau/Pidev_Mobil/codename-project-full-code-source-main/src/com/mycompany/services/ServiceUtilisateur.java</file>
+            <file>file:/C:/Users/ASUS/OneDrive/Bureau/Pidev_Mobil/codename-project-full-code-source-main/src/com/mycompany/gui/ProfileForm.java</file>
+            <file>file:/C:/Users/ASUS/OneDrive/Bureau/Pidev_Mobil/codename-project-full-code-source-main/src/com/mycompany/gui/SignInForm.java</file>
+            <file>file:/C:/Users/ASUS/OneDrive/Bureau/Pidev_Mobil/codename-project-full-code-source-main/src/com/mycompany/gui/SignUpForm.java</file>
+            <file>file:/C:/Users/ASUS/OneDrive/Bureau/Pidev_Mobil/codename-project-full-code-source-main/src/com/mycompany/gui/ActivateForm.java</file>
+            <file>file:/C:/Users/ASUS/OneDrive/Bureau/Pidev_Mobil/codename-project-full-code-source-main/src/com/mycompany/gui/BaseForm.java</file>
         </group>
     </open-files>
 </project-private>

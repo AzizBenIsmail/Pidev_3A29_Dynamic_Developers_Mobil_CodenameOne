@@ -34,6 +34,7 @@ import com.codename1.ui.layouts.Layout;
 import com.codename1.ui.plaf.Style;
 import com.codename1.ui.util.Resources;
 
+
 /**
  * Base class for the forms with common functionality
  *
